@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject private var homeViewModel: HomeViewModel
     @State private var number = 0
 
     init() {
@@ -49,7 +49,7 @@ struct HomeView: View {
                                 Spacer()
 
                                 Button(action: {
-                                    homeViewModel.addProductToCart(id: product.id)
+                                    homeViewModel.addProductToCart(id: product.id, quantity: 1)
                                 },
                                     label: {
                                         Text("Add")
@@ -86,67 +86,72 @@ struct HomeView: View {
 
             VStack {
 
-                List(homeViewModel.products, id: \.id) { product in
+                List(homeViewModel.cartProducts, id: \.id) { userProduct in
 
                     HStack {
-                        ComputerImageView(url: product.imageUrl)
+                        ComputerImageView(url: "\(userProduct.product.imageUrl)")
 
                         VStack(alignment: .leading) {
-                            Text(product.name)
+                            Text(String("\(userProduct.product.name)"))
                                 .foregroundStyle(.blue)
                                 .bold()
                                 .fixedSize(horizontal: true, vertical: false)
 
 
-                            Text(product.processor)
+                            Text(String("\(userProduct.product.processor)"))
 
-                            Text(String("\(product.ram) GB RAM"))
+                            Text(String("\(userProduct.product.ram) GB RAM"))
 
-                            Text(String("\(product.storage) SSD"))
+                            Text(String("\(userProduct.product.storage) SSD"))
 
                             Spacer()
 
                             HStack {
-                                Text(String("$ \(product.price)"))
+                                Text(String("$ \(userProduct.product.price)"))
                                     .foregroundStyle(.blue)
                                     .bold()
 
                                 Spacer()
 
-                                Button(action: {
-                                    if number > 0 {
-                                        number -= 1
+                                HStack(spacing: 10) {
+                                    Button(action: {
+                                        let addedValue = userProduct.quantity > 0 ? -1 : 0
+                                        homeViewModel.addProductToCart(
+                                            id: userProduct.product.id,
+                                            quantity: addedValue)
+                                    }) {
+                                        Text("-")
+                                            .foregroundStyle(.black)
+                                            .font(.title3)
                                     }
-                                }
-                                ) {
-                                    Text("-")
-                                        .foregroundStyle(.black)
-                                        .font(.title3)
+                                        .buttonStyle(.plain)
+
+
+                                    Text("\(userProduct.quantity)")
+                                        .foregroundStyle(.red)
+                                        .bold()
+
+                                    
+                                    Button(action: {
+                                        let addedValue = userProduct.quantity > 0 ? 1 : 0
+                                    
+
+                                        homeViewModel.addProductToCart(id: userProduct.product.id, quantity: addedValue)
+                                    }) {
+                                        Text("+")
+                                            .foregroundStyle(.black)
+                                            .font(.title3)
+                                    }
+                                        .buttonStyle(.plain)
+
 
                                 }
 
 
-                                Text("\(number)")
-                                    .foregroundStyle(.red)
-                                    .bold()
-
-
-                                Button(action: {
-                                    number += 1
-                                }) {
-                                    Text("+")
-                                        .foregroundStyle(.black)
-                                        .font(.title3)
-
-                                }
-                                
-                                
 
                             }
-                                .padding()
+
                         }
-
-
 
                     }
                         .padding()
@@ -169,11 +174,7 @@ struct HomeView: View {
                 .badge(homeViewModel.cartItemCount)
 
 
-            Text("Profile Screen")
-                .tabItem {
-                Image(systemName: "person.fill")
-                Text("Profile")
-            }
+
 
         }
 

@@ -8,13 +8,13 @@
 import Foundation
 
 struct Product : Codable {
-    let id: Int
-    let name: String
-    let price: Int
-    let ram: Int
-    let storage: Int
-    let processor: String
-    let imageUrl: String
+    var id: Int
+    var name: String
+    var price: Int
+    var ram: Int
+    var storage: Int
+    var processor: String
+    var imageUrl: String
     
     private enum CodingKeys: String, CodingKey {
            case id = "id"
@@ -25,6 +25,9 @@ struct Product : Codable {
            case processor = "processor"
            case imageUrl = "imageUrl"
        }
+    
+    
+    
 }
 
 

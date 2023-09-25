@@ -11,10 +11,13 @@ import Foundation
 class HomeViewModel: ObservableObject {
 
     @Published var products = [Product]()
+    @Published var cartProducts = [CartProduct]()
     private let httpDownloader = HttpDownloader()
     @Published var cartItemCount = 0
 
+
     init() {
+        getUserProducts()
         getProduts()
     }
 
@@ -34,30 +37,52 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+
+    func getUserProducts() {
+        httpDownloader.fetchUserProducts() { (result) in
+            switch result {
+
+            case .success(let cartProducts):
+                if let cartProducts = cartProducts {
+                    DispatchQueue.main.async {
+                        self.cartProducts = cartProducts
+                    }
+                }
+
+            case .failure(let error):
+                print("Error fetching products: \(error)")
+            }
+
+        }
+
+    }
     
     func getProductCountByUserId() {
         httpDownloader.fetchProductCountByUserId() { (result) in
-            switch result{
+            switch result {
             case .success(let count):
                 DispatchQueue.main.async {
                     self.cartItemCount = count
                 }
-                
+
             case .failure(let error):
                 print("Error fetching products: \(error)")
-                
+
             }
-            
+
         }
     }
+    
 
-    func addProductToCart(id: Int) {
-        httpDownloader.addProductToCart(productId: id) { result in
+
+    func addProductToCart(id: Int, quantity: Int) {
+        httpDownloader.addProductToCart(productId: id, quantity: quantity) { result in
             switch result {
 
             case .success:
                 DispatchQueue.main.async {
                     self.getProductCountByUserId()
+                    self.getUserProducts()
                 }
             case .failure(let error):
                 print("Error fetching products: \(error)")
@@ -65,7 +90,9 @@ class HomeViewModel: ObservableObject {
         }
 
     }
+
 }
+
 
 
 

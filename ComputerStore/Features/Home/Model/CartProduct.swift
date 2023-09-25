@@ -9,9 +9,9 @@ import Foundation
 
 
 struct CartProduct : Codable {
-    let id: Int
-    let product: Product
-    let quantity: Int
+    var id: Int
+    var product: Product
+    var quantity: Int
     
     private enum CodingKeys: String, CodingKey {
            case id = "id"
