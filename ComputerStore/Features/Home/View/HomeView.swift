@@ -20,6 +20,10 @@ struct HomeView: View {
     var body: some View {
         TabView {
             VStack {
+                Text("Computer Store")
+                    .bold()
+                    .font(.title)
+                    .padding()
 
                 List(homeViewModel.products, id: \.id) { product in
 
@@ -81,11 +85,15 @@ struct HomeView: View {
                 .tabItem {
                 Image(systemName: "house")
                 Text("Home")
+                        .onAppear {
+                            homeViewModel.getProductCountByUserId()
+                        homeViewModel.calculateTotalPrice(products: homeViewModel.cartProducts)
+                    }
             }
 
 
             VStack {
-
+            
                 List(homeViewModel.cartProducts, id: \.id) { userProduct in
 
                     HStack {
@@ -116,9 +124,13 @@ struct HomeView: View {
                                 HStack(spacing: 10) {
                                     Button(action: {
                                         let addedValue = userProduct.quantity > 0 ? -1 : 0
+
                                         homeViewModel.addProductToCart(
                                             id: userProduct.product.id,
                                             quantity: addedValue)
+                                        
+                                      
+
                                     }) {
                                         Text("-")
                                             .foregroundStyle(.black)
@@ -131,12 +143,12 @@ struct HomeView: View {
                                         .foregroundStyle(.red)
                                         .bold()
 
-                                    
+
                                     Button(action: {
                                         let addedValue = userProduct.quantity > 0 ? 1 : 0
-                                    
 
                                         homeViewModel.addProductToCart(id: userProduct.product.id, quantity: addedValue)
+                                   
                                     }) {
                                         Text("+")
                                             .foregroundStyle(.black)
@@ -159,7 +171,11 @@ struct HomeView: View {
                         .background(Color.gray.opacity(0.5))
                         .cornerRadius(10)
 
+
+
                 }.listStyle(GroupedListStyle.init())
+
+                Text("Total Price : $ \(homeViewModel.totalAmount, specifier: "%.2f")")
 
             }
                 .tabItem {
@@ -172,9 +188,14 @@ struct HomeView: View {
                 Text("Cart")
             }
                 .badge(homeViewModel.cartItemCount)
+                .onAppear {
+                    homeViewModel.getProductCountByUserId()
+                homeViewModel.calculateTotalPrice(products: homeViewModel.cartProducts)
+            }
+            
 
 
-
+         
 
         }
 

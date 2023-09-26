@@ -14,11 +14,23 @@ class HomeViewModel: ObservableObject {
     @Published var cartProducts = [CartProduct]()
     private let httpDownloader = HttpDownloader()
     @Published var cartItemCount = 0
+    @Published var totalAmount: Double = 0
 
 
     init() {
         getUserProducts()
         getProduts()
+        calculateTotalPrice(products: cartProducts)
+    }
+
+
+    func calculateTotalPrice(products: [CartProduct]) {
+        totalAmount = 0
+        for product in products {
+            let productPrice = product.product.price
+            let productQuantity = product.quantity
+            totalAmount += Double(productPrice * productQuantity)
+        }
     }
 
     func getProduts() {
@@ -46,6 +58,7 @@ class HomeViewModel: ObservableObject {
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
                         self.cartProducts = cartProducts
+
                     }
                 }
 
@@ -56,7 +69,7 @@ class HomeViewModel: ObservableObject {
         }
 
     }
-    
+
     func getProductCountByUserId() {
         httpDownloader.fetchProductCountByUserId() { (result) in
             switch result {
@@ -72,8 +85,6 @@ class HomeViewModel: ObservableObject {
 
         }
     }
-    
-
 
     func addProductToCart(id: Int, quantity: Int) {
         httpDownloader.addProductToCart(productId: id, quantity: quantity) { result in
@@ -81,8 +92,11 @@ class HomeViewModel: ObservableObject {
 
             case .success:
                 DispatchQueue.main.async {
-                    self.getProductCountByUserId()
                     self.getUserProducts()
+
+              
+
+                    self.calculateTotalPrice(products: self.cartProducts)
                 }
             case .failure(let error):
                 print("Error fetching products: \(error)")

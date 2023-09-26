@@ -11,5 +11,7 @@ import Foundation
 enum NetworkException: Error {
     case notFound
     case noData
+    case parsingError
+    case invalidResponse
     
 }
