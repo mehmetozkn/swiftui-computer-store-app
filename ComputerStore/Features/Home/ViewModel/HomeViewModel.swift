@@ -58,16 +58,13 @@ class HomeViewModel: ObservableObject {
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
                         self.cartProducts = cartProducts
-
                     }
                 }
 
             case .failure(let error):
                 print("Error fetching products: \(error)")
             }
-
         }
-
     }
 
     func getProductCountByUserId() {
@@ -94,7 +91,7 @@ class HomeViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.getUserProducts()
 
-              
+                    print(self.cartProducts.first?.quantity ?? 0)
 
                     self.calculateTotalPrice(products: self.cartProducts)
                 }

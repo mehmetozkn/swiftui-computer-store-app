@@ -4,7 +4,7 @@
 //
 //  Created by Mehmet Özkan on 21.09.2023.
 //
-
+ 
 import Foundation
 
 class ImageDownloader: ObservableObject {

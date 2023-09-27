@@ -8,7 +8,8 @@ SwiftUI Computer Store App
 
 - This project provides to add product to basket for existing users
 
-### Tech Stack
+### Includes
 
 - MVVM Design Pattern
 - REST API
+- Kingfisher

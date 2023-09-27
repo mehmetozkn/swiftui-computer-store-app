@@ -28,7 +28,7 @@ struct HomeView: View {
                 List(homeViewModel.products, id: \.id) { product in
 
                     HStack {
-                        ComputerImageView(url: product.imageUrl)
+                        ComputerImageView(imageUrl: product.imageUrl)
 
                         VStack(alignment: .leading) {
                             Text(product.name)
@@ -97,7 +97,7 @@ struct HomeView: View {
                 List(homeViewModel.cartProducts, id: \.id) { userProduct in
 
                     HStack {
-                        ComputerImageView(url: "\(userProduct.product.imageUrl)")
+                        ComputerImageView(imageUrl: "\(userProduct.product.imageUrl)")
 
                         VStack(alignment: .leading) {
                             Text(String("\(userProduct.product.name)"))
