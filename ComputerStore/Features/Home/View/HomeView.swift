@@ -9,6 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
 
+  
+    private let title = "Computer Store"
+    private let completeButtonText = "Complete Order"
+    private let addButtonText = "Add"
+    private let totalPrice = "Total Price"
+    
     @ObservedObject private var homeViewModel: HomeViewModel
     @State private var number = 0
 
@@ -20,7 +26,7 @@ struct HomeView: View {
     var body: some View {
         TabView {
             VStack {
-                Text("Computer Store")
+                Text(title)
                     .bold()
                     .font(.title)
                     .padding()
@@ -56,7 +62,7 @@ struct HomeView: View {
                                     homeViewModel.addProductToCart(id: product.id, quantity: 1)
                                 },
                                     label: {
-                                        Text("Add")
+                                        Text(addButtonText)
                                             .frame(width: UIScreen.screenWidth * 0.12)
                                             .background(Color.blue)
                                             .foregroundStyle(.black)
@@ -87,96 +93,113 @@ struct HomeView: View {
                 Text("Home")
                         .onAppear {
                             homeViewModel.getProductCountByUserId()
-                        homeViewModel.calculateTotalPrice(products: homeViewModel.cartProducts)
+                            
                     }
             }
 
 
             VStack {
-            
+                
                 List(homeViewModel.cartProducts, id: \.id) { userProduct in
-
+                    
                     HStack {
                         ComputerImageView(imageUrl: "\(userProduct.product.imageUrl)")
-
+                        
                         VStack(alignment: .leading) {
                             Text(String("\(userProduct.product.name)"))
                                 .foregroundStyle(.blue)
                                 .bold()
                                 .fixedSize(horizontal: true, vertical: false)
-
-
+                            
+                            
                             Text(String("\(userProduct.product.processor)"))
-
+                            
                             Text(String("\(userProduct.product.ram) GB RAM"))
-
+                            
                             Text(String("\(userProduct.product.storage) SSD"))
-
+                            
                             Spacer()
-
+                            
                             HStack {
                                 Text(String("$ \(userProduct.product.price)"))
                                     .foregroundStyle(.blue)
                                     .bold()
-
+                                
                                 Spacer()
-
+                                
                                 HStack(spacing: 10) {
                                     Button(action: {
                                         let addedValue = userProduct.quantity > 0 ? -1 : 0
-
+                                        
                                         homeViewModel.addProductToCart(
                                             id: userProduct.product.id,
                                             quantity: addedValue)
                                         
-                                      
-
+                                        
+                                        
                                     }) {
                                         Text("-")
                                             .foregroundStyle(.black)
                                             .font(.title3)
                                     }
-                                        .buttonStyle(.plain)
-
-
+                                    .buttonStyle(.plain)
+                                    
+                                    
                                     Text("\(userProduct.quantity)")
                                         .foregroundStyle(.red)
                                         .bold()
-
-
+                                    
+                                    
                                     Button(action: {
                                         let addedValue = userProduct.quantity > 0 ? 1 : 0
-
+                                        
                                         homeViewModel.addProductToCart(id: userProduct.product.id, quantity: addedValue)
-                                   
+                                        
                                     }) {
                                         Text("+")
                                             .foregroundStyle(.black)
                                             .font(.title3)
                                     }
-                                        .buttonStyle(.plain)
-
-
+                                    .buttonStyle(.plain)
+                                    
+                                    
                                 }
-
-
-
+                                
+                                
+                                
                             }
-
+                            
                         }
-
+                        
                     }
-                        .padding()
-                        .frame(height: UIScreen.screenHeight * 0.2)
-                        .background(Color.gray.opacity(0.5))
-                        .cornerRadius(10)
-
-
-
+                    .padding()
+                    .frame(height: UIScreen.screenHeight * 0.2)
+                    .background(Color.gray.opacity(0.5))
+                    .cornerRadius(10)
+                    
+                    
+                    
                 }.listStyle(GroupedListStyle.init())
-
-                Text("Total Price : $ \(homeViewModel.totalAmount, specifier: "%.2f")")
-
+                
+                Text("\(totalPrice): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
+                Spacer()
+                Button(action: {
+                    //homeViewModel.clearBasket()
+                    print(homeViewModel.cartProducts.first?.quantity ?? 0)
+                    
+                }, label: {
+                    Text(completeButtonText)
+                        .frame(width: UIScreen.screenWidth * 0.4)
+                        .background(Color.blue)
+                        .foregroundStyle(.white)
+                        .bold()
+                        .cornerRadius(8)
+                        .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.blue, lineWidth: 6)
+                    )
+                })
+                
             }
                 .tabItem {
                 HStack {

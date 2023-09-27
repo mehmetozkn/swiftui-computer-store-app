@@ -8,9 +8,9 @@
 import Foundation
 
 
-struct CartProduct : Codable {
+struct CartProductModel : Codable {
     var id: Int
-    var product: Product
+    var product: ProductModel
     var quantity: Int
     
     private enum CodingKeys: String, CodingKey {

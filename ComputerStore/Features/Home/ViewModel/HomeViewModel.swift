@@ -10,9 +10,9 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
 
-    @Published var products = [Product]()
-    @Published var cartProducts = [CartProduct]()
-    private let httpDownloader = HttpDownloader()
+    @Published var products = [ProductModel]()
+    @Published var cartProducts = [CartProductModel]()
+    private let homeService = HomeService()
     @Published var cartItemCount = 0
     @Published var totalAmount: Double = 0
 
@@ -24,7 +24,7 @@ class HomeViewModel: ObservableObject {
     }
 
 
-    func calculateTotalPrice(products: [CartProduct]) {
+    func calculateTotalPrice(products: [CartProductModel]) {
         totalAmount = 0
         for product in products {
             let productPrice = product.product.price
@@ -33,8 +33,27 @@ class HomeViewModel: ObservableObject {
         }
     }
 
+    func clearBasket() {
+           // clearBasket işlevini çağır
+        homeService.clearBasket(path: .clearBasket) { result in
+               switch result {
+               case .success(true):
+                   DispatchQueue.main.async {
+                       self.cartProducts = []
+                   }
+                   
+               case .failure(let error):
+                   print("Error clearing products: \(error)")
+
+               default:
+                   break
+               }
+           }
+       }
+
+
     func getProduts() {
-        httpDownloader.fetchProducts() { (result) in
+        homeService.fetchProducts(path: .getAll) { (result) in
             switch result {
 
             case .success(let products):
@@ -51,7 +70,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func getUserProducts() {
-        httpDownloader.fetchUserProducts() { (result) in
+        homeService.fetchUserProducts(path: .getProductByUserId) { (result) in
             switch result {
 
             case .success(let cartProducts):
@@ -62,13 +81,13 @@ class HomeViewModel: ObservableObject {
                 }
 
             case .failure(let error):
-                print("Error fetching products: \(error)")
+                print("Error fetching user products: \(error)")
             }
         }
     }
 
     func getProductCountByUserId() {
-        httpDownloader.fetchProductCountByUserId() { (result) in
+        homeService.fetchProductCountByUserId(path: .getProductByUserId) { (result) in
             switch result {
             case .success(let count):
                 DispatchQueue.main.async {
@@ -76,7 +95,7 @@ class HomeViewModel: ObservableObject {
                 }
 
             case .failure(let error):
-                print("Error fetching products: \(error)")
+                print("Error fetching products count: \(error)")
 
             }
 
@@ -84,19 +103,22 @@ class HomeViewModel: ObservableObject {
     }
 
     func addProductToCart(id: Int, quantity: Int) {
-        httpDownloader.addProductToCart(productId: id, quantity: quantity) { result in
+        homeService.addProductToCart(path: .addProductToBasket, productId: id, quantity: quantity) { result in
             switch result {
 
             case .success:
                 DispatchQueue.main.async {
                     self.getUserProducts()
 
-                    print(self.cartProducts.first?.quantity ?? 0)
+                    self.getProductCountByUserId()
 
                     self.calculateTotalPrice(products: self.cartProducts)
+                    
+                    print(self.cartProducts.first?.quantity ?? 0)
+                    
                 }
             case .failure(let error):
-                print("Error fetching products: \(error)")
+                print("Error adding product: \(error)")
             }
         }
 

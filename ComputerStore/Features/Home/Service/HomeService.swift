@@ -8,15 +8,12 @@
 import Foundation
 
 
-class HttpDownloader {
+class HomeService {
+    private let baseUrl = "http://localhost:8080/v1/"
+  
 
-    private let allProductsURL = "http://localhost:8080/v1/product/getAll"
-    private let userProductsURL = "http://localhost:8080/v1/user/getProductsByUserId/1"
-    private let addProductToBasketURL = "http://localhost:8080/v1/operation/addProductToBasket"
-    private let clearBasketURL = "http://localhost:8080/v1/operation/deleteAll"
-
-    func fetchProducts(completion: @escaping (Result<[Product]?, NetworkException>) -> Void) {
-        guard let url = URL(string: allProductsURL) else {
+    func fetchProducts(path: HttpPaths, completion: @escaping (Result<[ProductModel]?, NetworkException>) -> Void) {
+        guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))
         }
 
@@ -25,7 +22,7 @@ class HttpDownloader {
                 return completion(.failure(.noData))
             }
 
-            guard let response = try? JSONDecoder().decode([Product].self, from: data)
+            guard let response = try? JSONDecoder().decode([ProductModel].self, from: data)
                 else {
                 return completion(.failure(.notFound))
             }
@@ -35,8 +32,8 @@ class HttpDownloader {
         }.resume()
     }
 
-    func fetchUserProducts(completion: @escaping (Result<[CartProduct]?, NetworkException>) -> Void) {
-        guard let url = URL(string: userProductsURL) else {
+    func fetchUserProducts(path: HttpPaths, completion: @escaping (Result<[CartProductModel]?, NetworkException>) -> Void) {
+        guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))
         }
 
@@ -45,7 +42,7 @@ class HttpDownloader {
                 return completion(.failure(.noData))
             }
 
-            guard let response = try? JSONDecoder().decode([CartProduct].self, from: data)
+            guard let response = try? JSONDecoder().decode([CartProductModel].self, from: data)
                 else {
                 return completion(.failure(.notFound))
             }
@@ -58,8 +55,8 @@ class HttpDownloader {
 
 
 
-    func fetchProductCountByUserId(completion: @escaping (Result<Int, NetworkException>) -> Void) {
-        guard let url = URL(string: userProductsURL) else {
+    func fetchProductCountByUserId(path: HttpPaths, completion: @escaping (Result<Int, NetworkException>) -> Void) {
+        guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))
         }
 
@@ -68,7 +65,7 @@ class HttpDownloader {
                 return completion(.failure(.noData))
             }
 
-            guard let response = try? JSONDecoder().decode([CartProduct].self, from: data)
+            guard let response = try? JSONDecoder().decode([CartProductModel].self, from: data)
                 else {
 
                 return completion(.failure(.notFound))
@@ -79,8 +76,8 @@ class HttpDownloader {
         }.resume()
     }
 
-    func clearBasket() {
-        guard let url = URL(string: clearBasketURL) else {
+    func clearBasket(path: HttpPaths, completion: @escaping (Result<Bool, NetworkException>) -> Void)  {
+        guard let url = URL(string: baseUrl + path.rawValue) else {
             return
         }
 
@@ -89,18 +86,18 @@ class HttpDownloader {
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-
-                print("Hata: \(error.localizedDescription)")
+                completion(.failure(.invalidResponse))
+                
             } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                print("Basket cleared successfully!")
+                completion(.success(true))
 
             }
         }.resume()
     }
 
 
-    func addProductToCart(productId: Int, quantity: Int, completion: @escaping (Result<HTTPURLResponse, NetworkException>) -> Void) {
-        guard let url = URL(string: addProductToBasketURL) else {
+    func addProductToCart(path: HttpPaths, productId: Int, quantity: Int, completion: @escaping (Result<HTTPURLResponse, NetworkException>) -> Void) {
+        guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))
         }
 
