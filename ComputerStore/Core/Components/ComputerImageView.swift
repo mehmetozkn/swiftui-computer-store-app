@@ -15,6 +15,7 @@ struct ComputerImageView: View {
         VStack {
             KFImage(URL(string: imageUrl))
                 .resizable()
+
         }
     }
 }

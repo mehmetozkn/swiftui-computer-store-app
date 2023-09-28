@@ -115,7 +115,6 @@ class HomeViewModel: ObservableObject {
 
                     self.calculateTotalPrice()
                     
-                    
                 }
             case .failure(let error):
                 print("Error adding product: \(error)")

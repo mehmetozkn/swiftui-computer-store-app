@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85774D312AC5A39800494482 /* LocaleKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85774D302AC5A39800494482 /* LocaleKeys.swift */; };
 		858416822AC42CC60098EDB8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 858416812AC42CC60098EDB8 /* Kingfisher */; };
 		858416842AC433BE0098EDB8 /* HttpPathsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858416832AC433BE0098EDB8 /* HttpPathsEnum.swift */; };
 		858416872AC435340098EDB8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 858416862AC435340098EDB8 /* Alamofire */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85774D302AC5A39800494482 /* LocaleKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleKeys.swift; sourceTree = "<group>"; };
 		858416832AC433BE0098EDB8 /* HttpPathsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPathsEnum.swift; sourceTree = "<group>"; };
 		859171082ABDDA890023DEDB /* CartProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductModel.swift; sourceTree = "<group>"; };
 		85E7723E2ABB97B2001DA5A1 /* ComputerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComputerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85774D322AC5A55100494482 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				85774D302AC5A39800494482 /* LocaleKeys.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		85774D332AC5A6A500494482 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				85F04FFA2ABCA65C009CB1BB /* ComputerImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		85D1305B2ABB98380038D2F0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				85E772432ABB97B2001DA5A1 /* HomeView.swift */,
-				85F04FFA2ABCA65C009CB1BB /* ComputerImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +163,8 @@
 		85F050022ABCA915009CB1BB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				85774D332AC5A6A500494482 /* Components */,
+				85774D322AC5A55100494482 /* Localizable */,
 				85F050102ABCB1EB009CB1BB /* Enums */,
 				85F050062ABCACE5009CB1BB /* Extensions */,
 			);
@@ -258,6 +277,7 @@
 				85E772422ABB97B2001DA5A1 /* ComputerStoreApp.swift in Sources */,
 				858416842AC433BE0098EDB8 /* HttpPathsEnum.swift in Sources */,
 				85F0500D2ABCB0F4009CB1BB /* HomeService.swift in Sources */,
+				85774D312AC5A39800494482 /* LocaleKeys.swift in Sources */,
 				85F050082ABCAEA8009CB1BB /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

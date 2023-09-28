@@ -1,19 +1,16 @@
 //
-//  ContentView.swift
+//  CartView.swift
 //  ComputerStore
 //
-//  Created by Mehmet Özkan on 21.09.2023.
+//  Created by Mehmet Özkan on 28.09.2023.
 //
 
 import SwiftUI
 
-struct HomeView: View {
-
-
-
+struct CartView: View {
 
     @ObservedObject private var homeViewModel: HomeViewModel
-    @State private var number = 0
+
 
     init() {
         self.homeViewModel = HomeViewModel()
@@ -21,21 +18,6 @@ struct HomeView: View {
     }
 
     var body: some View {
-        TabView {
-
-            HomeTab(homeViewModel: homeViewModel)
-
-            CartTab(homeViewModel: homeViewModel)
-
-        }
-    }
-}
-
-private struct CartTab: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-
-    var body: some View {
-
         VStack {
 
             List(homeViewModel.cartProducts, id: \.id) { userProduct in
@@ -99,14 +81,23 @@ private struct CartTab: View {
                                         .font(.title3)
                                 }
                                     .buttonStyle(.plain)
+
+
                             }
+
+
+
                         }
+
                     }
+
                 }
                     .padding()
                     .frame(height: UIScreen.screenHeight * 0.2)
                     .background(Color.gray.opacity(0.5))
                     .cornerRadius(10)
+
+
 
             }.listStyle(GroupedListStyle.init())
 
@@ -115,7 +106,8 @@ private struct CartTab: View {
             Spacer()
 
             Button(action: {
-                homeViewModel.clearBasket()
+                //homeViewModel.clearBasket()
+                print(homeViewModel.cartProducts.first?.quantity ?? 0)
 
             }, label: {
 
@@ -149,84 +141,6 @@ private struct CartTab: View {
     }
 }
 
-private struct HomeTab: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-
-    var body: some View {
-        VStack {
-            Text(LocaleKeys.shared.title)
-                .bold()
-                .font(.title)
-                .padding()
-
-            List(homeViewModel.products, id: \.id) { product in
-
-                HStack {
-                    ComputerImageView(imageUrl: product.imageUrl)
-
-                    VStack(alignment: .leading) {
-                        Text(product.name)
-                            .foregroundStyle(.blue)
-                            .bold()
-                            .fixedSize(horizontal: true, vertical: false)
-
-
-                        Text(product.processor)
-
-                        Text(String("\(product.ram) GB RAM"))
-
-                        Text(String("\(product.storage) SSD"))
-
-                        Spacer()
-
-                        HStack {
-                            Text(String("$ \(product.price)"))
-                                .foregroundStyle(.blue)
-                                .bold()
-
-                            Spacer()
-
-                            Button(action: {
-                                homeViewModel.addProductToCart(id: product.id, quantity: 1)
-                            },
-                                label: {
-                                    Text(LocaleKeys.shared.addButtonText)
-                                        .frame(width: UIScreen.screenWidth * 0.12)
-                                        .background(Color.blue)
-                                        .foregroundStyle(.black)
-                                        .bold()
-                                        .cornerRadius(8)
-                                        .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.blue, lineWidth: 6)
-                                    )
-                                })
-                        }
-                    }
-
-                    Spacer()
-                }
-                    .padding()
-                    .frame(height: UIScreen.screenHeight * 0.2)
-                    .background(Color.gray.opacity(0.5))
-                    .cornerRadius(10)
-
-            }.listStyle(GroupedListStyle.init())
-
-        }
-            .tabItem {
-            Image(systemName: "house")
-            Text("Home")
-                .onAppear {
-                homeViewModel.getProductCountByUserId()
-
-            }
-        }
-    }
-}
-
 #Preview {
-    HomeView()
+    CartView()
 }
-
-
