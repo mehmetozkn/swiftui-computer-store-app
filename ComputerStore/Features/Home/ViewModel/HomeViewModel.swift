@@ -19,14 +19,14 @@ class HomeViewModel: ObservableObject {
 
     init() {
         getUserProducts()
-        getProduts()
-        calculateTotalPrice(products: cartProducts)
+        getAllProduts()
+        calculateTotalPrice()
     }
 
 
-    func calculateTotalPrice(products: [CartProductModel]) {
+    func calculateTotalPrice() {
         totalAmount = 0
-        for product in products {
+        for product in self.cartProducts {
             let productPrice = product.product.price
             let productQuantity = product.quantity
             totalAmount += Double(productPrice * productQuantity)
@@ -34,7 +34,6 @@ class HomeViewModel: ObservableObject {
     }
 
     func clearBasket() {
-           // clearBasket işlevini çağır
         homeService.clearBasket(path: .clearBasket) { result in
                switch result {
                case .success(true):
@@ -52,7 +51,7 @@ class HomeViewModel: ObservableObject {
        }
 
 
-    func getProduts() {
+    func getAllProduts() {
         homeService.fetchProducts(path: .getAll) { (result) in
             switch result {
 
@@ -77,6 +76,7 @@ class HomeViewModel: ObservableObject {
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
                         self.cartProducts = cartProducts
+                        print("A: + \(self.cartProducts.first?.quantity ?? 0)")
                     }
                 }
 
@@ -108,13 +108,13 @@ class HomeViewModel: ObservableObject {
 
             case .success:
                 DispatchQueue.main.async {
+               
                     self.getUserProducts()
 
                     self.getProductCountByUserId()
 
-                    self.calculateTotalPrice(products: self.cartProducts)
+                    self.calculateTotalPrice()
                     
-                    print(self.cartProducts.first?.quantity ?? 0)
                     
                 }
             case .failure(let error):

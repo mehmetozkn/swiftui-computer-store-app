@@ -127,7 +127,7 @@ class HomeService {
 
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-
+                   
                     return completion(.success(httpResponse))
 
                 } else {

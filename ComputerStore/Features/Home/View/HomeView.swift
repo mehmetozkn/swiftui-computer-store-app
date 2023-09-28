@@ -213,7 +213,7 @@ struct HomeView: View {
                 .badge(homeViewModel.cartItemCount)
                 .onAppear {
                     homeViewModel.getProductCountByUserId()
-                homeViewModel.calculateTotalPrice(products: homeViewModel.cartProducts)
+                homeViewModel.calculateTotalPrice()
             }
             
 
