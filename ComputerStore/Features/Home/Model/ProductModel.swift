@@ -26,8 +26,6 @@ struct ProductModel : Codable {
            case imageUrl = "imageUrl"
        }
     
-    
-    
 }
 
 

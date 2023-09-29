@@ -15,5 +15,6 @@ class LocaleKeys {
     let completeButtonText = "Complete Order"
     let addButtonText = "Add"
     let totalPrice = "Total Price"
+    let emptyCart = "There are no items in your cart"
 }
 

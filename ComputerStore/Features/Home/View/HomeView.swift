@@ -9,9 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
 
-
-
-
     @ObservedObject private var homeViewModel: HomeViewModel
     @State private var number = 0
 
@@ -26,10 +23,33 @@ struct HomeView: View {
             HomeTab(homeViewModel: homeViewModel)
 
             CartTab(homeViewModel: homeViewModel)
+            
+            ProfileTab(homeViewModel: homeViewModel)
 
         }
     }
 }
+
+private struct ProfileTab: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+
+    var body: some View {
+
+        VStack {
+            
+            
+        } .tabItem {
+            HStack {
+                Image(systemName: "person.fill")
+                    .onTapGesture {
+
+                }
+            }
+            Text("Profile")
+        }
+    }
+}
+
 
 private struct CartTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
@@ -37,101 +57,112 @@ private struct CartTab: View {
     var body: some View {
 
         VStack {
+            
+            if homeViewModel.cartProducts.isEmpty {
+                Text(LocaleKeys.shared.emptyCart)
+                                .foregroundColor(.blue)
+                                .font(.title2)
+                                .bold()
+                                .padding()
+            } else {
+                List(homeViewModel.cartProducts, id: \.id) { userProduct in
 
-            List(homeViewModel.cartProducts, id: \.id) { userProduct in
+                    HStack {
+                        ComputerImageView(imageUrl: "\(userProduct.product.imageUrl)")
 
-                HStack {
-                    ComputerImageView(imageUrl: "\(userProduct.product.imageUrl)")
-
-                    VStack(alignment: .leading) {
-                        Text(String("\(userProduct.product.name)"))
-                            .foregroundStyle(.blue)
-                            .bold()
-                            .fixedSize(horizontal: true, vertical: false)
-
-
-                        Text(String("\(userProduct.product.processor)"))
-
-                        Text(String("\(userProduct.product.ram) GB RAM"))
-
-                        Text(String("\(userProduct.product.storage) SSD"))
-
-                        Spacer()
-
-                        HStack {
-                            Text(String("$ \(userProduct.product.price)"))
+                        VStack(alignment: .leading) {
+                            Text(String("\(userProduct.product.name)"))
                                 .foregroundStyle(.blue)
                                 .bold()
+                                .fixedSize(horizontal: true, vertical: false)
+
+
+                            Text(String("\(userProduct.product.processor)"))
+
+                            Text(String("\(userProduct.product.ram) GB RAM"))
+
+                            Text(String("\(userProduct.product.storage) SSD"))
 
                             Spacer()
 
-                            HStack(spacing: 10) {
-                                Button(action: {
-                                    let addedValue = userProduct.quantity > 0 ? -1 : 0
-
-                                    homeViewModel.addProductToCart(
-                                        id: userProduct.product.id,
-                                        quantity: addedValue)
-
-
-
-                                }) {
-                                    Text("-")
-                                        .foregroundStyle(.black)
-                                        .font(.title3)
-                                }
-                                    .buttonStyle(.plain)
-
-
-                                Text("\(userProduct.quantity)")
-                                    .foregroundStyle(.red)
+                            HStack {
+                                Text(String("$ \(userProduct.product.price)"))
+                                    .foregroundStyle(.blue)
                                     .bold()
 
+                                Spacer()
 
-                                Button(action: {
-                                    let addedValue = userProduct.quantity > 0 ? 1 : 0
+                                HStack(spacing: 10) {
+                                    Button(action: {
+                                        let addedValue = userProduct.quantity > 0 ? -1 : 0
 
-                                    homeViewModel.addProductToCart(id: userProduct.product.id, quantity: addedValue)
+                                        homeViewModel.addProductToCart(
+                                            id: userProduct.product.id,
+                                            quantity: addedValue)
 
-                                }) {
-                                    Text("+")
-                                        .foregroundStyle(.black)
-                                        .font(.title3)
+
+
+                                    }) {
+                                        Text("-")
+                                            .foregroundStyle(.black)
+                                            .font(.title3)
+                                    }
+                                        .buttonStyle(.plain)
+
+
+                                    Text("\(userProduct.quantity)")
+                                        .foregroundStyle(.red)
+                                        .bold()
+
+
+                                    Button(action: {
+                                        let addedValue = userProduct.quantity > 0 ? 1 : 0
+
+                                        homeViewModel.addProductToCart(id: userProduct.product.id, quantity: addedValue)
+
+                                    }) {
+                                        Text("+")
+                                            .foregroundStyle(.black)
+                                            .font(.title3)
+                                    }
+                                        .buttonStyle(.plain)
                                 }
-                                    .buttonStyle(.plain)
                             }
                         }
                     }
-                }
-                    .padding()
-                    .frame(height: UIScreen.screenHeight * 0.2)
-                    .background(Color.gray.opacity(0.5))
-                    .cornerRadius(10)
+                        .padding()
+                        .frame(height: UIScreen.screenHeight * 0.2)
+                        .background(Color.gray.opacity(0.5))
+                        .cornerRadius(10)
 
-            }.listStyle(GroupedListStyle.init())
+                }.listStyle(GroupedListStyle.init())
+                
 
-            Text("\(LocaleKeys.shared.totalPrice): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
+                Text("\(LocaleKeys.shared.totalPrice): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
 
-            Spacer()
+                Spacer()
 
-            Button(action: {
-                homeViewModel.clearBasket()
+                Button(action: {
+                    homeViewModel.clearBasket()
 
-            }, label: {
+                }, label: {
 
-                    Text(LocaleKeys.shared.completeButtonText)
-                        .frame(width: UIScreen.screenWidth * 0.4)
-                        .background(Color.blue)
-                        .foregroundStyle(.white)
-                        .bold()
-                        .cornerRadius(8)
-                        .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.blue, lineWidth: 6)
-                    )
-                })
+                        Text(LocaleKeys.shared.completeButtonText)
+                            .frame(width: UIScreen.screenWidth * 0.4)
+                            .background(Color.blue)
+                            .foregroundStyle(.white)
+                            .bold()
+                            .cornerRadius(8)
+                            .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.blue, lineWidth: 6)
+                        )
+                    })
 
-        }
+            }
+            }
+
+            
             .tabItem {
             HStack {
                 Image(systemName: "cart")
