@@ -9,13 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @ObservedObject private var homeViewModel: HomeViewModel
+    @ObservedObject private var homeViewModel: HomeViewModel = HomeViewModel()
     @State private var number = 0
 
-    init() {
-        self.homeViewModel = HomeViewModel()
 
-    }
 
     var body: some View {
         TabView {
@@ -23,32 +20,58 @@ struct HomeView: View {
             HomeTab(homeViewModel: homeViewModel)
 
             CartTab(homeViewModel: homeViewModel)
-            
+
             ProfileTab(homeViewModel: homeViewModel)
 
         }
+        
+       .toolbar(.hidden, for: .navigationBar)
+        
     }
 }
 
-private struct ProfileTab: View {
+struct ProfileTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    @State private var isRegisterPageActive = false
+    @State private var isLoginPageActive = false
 
     var body: some View {
+        NavigationView {
+            VStack {
 
-        VStack {
-            
-            
-        } .tabItem {
+                NavigationLink {
+                    RegisterView()
+                } label: {
+                    Text("Register Page")
+                }
+                
+            }
+        }
+        
+            .tabItem {
             HStack {
                 Image(systemName: "person.fill")
-                    .onTapGesture {
-
-                }
             }
             Text("Profile")
         }
     }
 }
+
+// RegisterPage ve LoginPage sayfalarını tanımlayın
+struct RegisterPage: View {
+    var body: some View {
+        // Register sayfasının içeriğini burada oluşturun
+        Text("Register Page")
+    }
+}
+
+struct LoginPage: View {
+    var body: some View {
+        // Login sayfasının içeriğini burada oluşturun
+        Text("Login Page")
+    }
+}
+
 
 
 private struct CartTab: View {
@@ -57,13 +80,13 @@ private struct CartTab: View {
     var body: some View {
 
         VStack {
-            
+
             if homeViewModel.cartProducts.isEmpty {
                 Text(LocaleKeys.shared.emptyCart)
-                                .foregroundColor(.blue)
-                                .font(.title2)
-                                .bold()
-                                .padding()
+                    .foregroundColor(.blue)
+                    .font(.title2)
+                    .bold()
+                    .padding()
             } else {
                 List(homeViewModel.cartProducts, id: \.id) { userProduct in
 
@@ -136,7 +159,7 @@ private struct CartTab: View {
                         .cornerRadius(10)
 
                 }.listStyle(GroupedListStyle.init())
-                
+
 
                 Text("\(LocaleKeys.shared.totalPrice): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
 
@@ -160,9 +183,9 @@ private struct CartTab: View {
                     })
 
             }
-            }
+        }
 
-            
+
             .tabItem {
             HStack {
                 Image(systemName: "cart")

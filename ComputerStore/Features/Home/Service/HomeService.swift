@@ -9,9 +9,9 @@ import Foundation
 
 
 class HomeService {
+    
     private let baseUrl = "http://localhost:8080/v1/"
   
-
     func fetchProducts(path: HttpPaths, completion: @escaping (Result<[ProductModel]?, NetworkException>) -> Void) {
         guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))

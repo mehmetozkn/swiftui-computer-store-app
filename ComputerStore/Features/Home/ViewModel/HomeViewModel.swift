@@ -76,7 +76,6 @@ class HomeViewModel: ObservableObject {
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
                         self.cartProducts = cartProducts
-                        print("A: + \(self.cartProducts.first?.quantity ?? 0)")
                     }
                 }
 
