@@ -8,8 +8,8 @@
 import Foundation
 
 
-class LocaleKeys {
-    static let shared = LocaleKeys()
+class LocaleString {
+    static let shared = LocaleString()
 
     let title = "Computer Store"
     let completeButtonText = "Complete Order"
@@ -17,4 +17,6 @@ class LocaleKeys {
     let totalPrice = "Total Price"
     let emptyCart = "There are no items in your cart"
 }
+
+
 

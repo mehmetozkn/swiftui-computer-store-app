@@ -86,7 +86,7 @@ private struct CartTab: View {
         VStack {
 
             if homeViewModel.cartProducts.isEmpty {
-                Text(LocaleKeys.shared.emptyCart)
+                Text(LocaleKeys.Home.emptyCart.rawValue.locale())
                     .foregroundColor(.blue)
                     .font(.title2)
                     .bold()
@@ -163,9 +163,10 @@ private struct CartTab: View {
                         .cornerRadius(10)
 
                 }.listStyle(GroupedListStyle.init())
+               Text(LocaleKeys.Home.totalPrice.rawValue.locale())
 
+                Text("\(LocaleKeys.Home.totalPrice.rawValue): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
 
-                Text("\(LocaleKeys.shared.totalPrice): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
 
                 Spacer()
 
@@ -174,7 +175,7 @@ private struct CartTab: View {
 
                 }, label: {
 
-                        Text(LocaleKeys.shared.completeButtonText)
+                    Text(LocaleKeys.Home.completeOrder.rawValue.locale())
                             .frame(width: UIScreen.screenWidth * 0.4)
                             .background(Color.blue)
                             .foregroundStyle(.white)
@@ -212,7 +213,7 @@ private struct HomeTab: View {
 
     var body: some View {
         VStack {
-            Text(LocaleKeys.shared.title)
+            Text(LocaleKeys.Home.title.rawValue.locale())
                 .bold()
                 .font(.title)
                 .padding()
@@ -248,7 +249,7 @@ private struct HomeTab: View {
                                 homeViewModel.addProductToCart(id: product.id, quantity: 1)
                             },
                                 label: {
-                                    Text(LocaleKeys.shared.addButtonText)
+                                Text(LocaleKeys.Home.add.rawValue.locale())
                                         .frame(width: UIScreen.screenWidth * 0.12)
                                         .background(Color.blue)
                                         .foregroundStyle(.black)

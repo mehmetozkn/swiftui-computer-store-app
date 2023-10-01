@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  ComputerStore
+
+  Created by Mehmet Özkan on 2.10.2023.
+  
+*/
+
+
+"computerStore" = "Bilgisayar Mağazası";
+"completeOrder" = "Siparişi Tamamla";
+"add" = "Ekle";
+"totalPrice" = "Toplam Fiyat";
+"emptyCart" = "Sepetiniz Ürün Yok";
+
+// Auth => Login - Register
+"loginToAcount" = "Hesaba Giriş Yap";
+"createAccount" = "Hesap Oluştur";
+"email" = "Email";
+"password" = "Şifre";
+"name" = "İsim";
+"surname" = "Soyisim";
+"alreadyAccount" = "Zaten hesabın var mı?";
+"dontAccount" = "Hesabın yok mu?";
+"login" = "Giriş Yap";
+"register" = "Kayıt ol";

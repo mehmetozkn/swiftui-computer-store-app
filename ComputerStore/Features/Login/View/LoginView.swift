@@ -27,12 +27,12 @@ struct LoginView: View {
                     .foregroundColor(.white)
 
                 VStack {
-                    Text("Login to Account")
+                    Text(LocaleKeys.Auth.loginTitle.rawValue.locale())
                         .font(.largeTitle)
                         .bold()
                         .padding()
 
-                    TextField("Email", text: $loginViewModel.emailValue)
+                    TextField(LocaleKeys.Auth.email.rawValue.locale(), text: $loginViewModel.emailValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
@@ -40,7 +40,7 @@ struct LoginView: View {
                         .textInputAutocapitalization(.never)
 
 
-                    SecureField("Password", text: $loginViewModel.passwordValue)
+                    SecureField(LocaleKeys.Auth.password.rawValue.locale(), text: $loginViewModel.passwordValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
@@ -53,12 +53,12 @@ struct LoginView: View {
                     }
                
                     label: {
-                        Button("Login") {
+                        Button(LocaleKeys.Auth.login.rawValue.locale()) {
                             loginViewModel.login(email: loginViewModel.emailValue, password: loginViewModel.passwordValue) { success in
                                 if success {
                                     redirectToHome = true
                                 } else {
-                                    print("Kayıt başarısız oldu")
+                                    
                                 }
                             }
 
@@ -74,11 +74,11 @@ struct LoginView: View {
 
                     HStack(spacing: 3) {
 
-                        Text("Don't have an account yet? ")
+                        Text(LocaleKeys.Auth.dontAccount.rawValue.locale())
                         NavigationLink {
                             RegisterView()
                         } label: {
-                            Text("Sign Up")
+                            Text(LocaleKeys.Auth.register.rawValue.locale())
                         }
 
                     }

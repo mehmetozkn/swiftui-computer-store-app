@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  ComputerStore
+
+  Created by Mehmet Özkan on 2.10.2023.
+  
+*/
+
+// Home
+"computerStore" = "Computer Store";
+"completeOrder" = "Complete Order";
+"add" = "Add";
+"totalPrice" = "Total Price";
+"emptyCart" = "There are no items in your cart";
+
+// Auth => Login - Register
+"loginToAcount" = "Login to Account";
+"createAccount" = "Create Account";
+"email" = "Email";
+"password" = "Password";
+"name" = "Name";
+"surname" = "Surname";
+"alreadyAccount" = "Already have an account?";
+"dontAccount" = "Don't have an account yet?";
+"login" = "Login";
+"register" = "Register";

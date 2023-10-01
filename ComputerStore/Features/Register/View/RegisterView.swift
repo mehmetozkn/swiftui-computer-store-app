@@ -27,33 +27,33 @@ struct RegisterView: View {
                     .foregroundColor(.white)
 
                 VStack {
-                    Text("Create Account")
+                    Text(LocaleKeys.Auth.registerTitle.rawValue.locale())
                         .font(.largeTitle)
                         .bold()
                         .padding()
                     
-                    TextField("Name", text: $registerViewModel.nameValue)
+                    TextField(LocaleKeys.Auth.name.rawValue.locale(), text: $registerViewModel.nameValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
                     
-                    TextField("Surname", text: $registerViewModel.surnameValue)
+                    TextField(LocaleKeys.Auth.surname.rawValue.locale(), text: $registerViewModel.surnameValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
 
-                    TextField("Email", text: $registerViewModel.emailValue)
+                    TextField(LocaleKeys.Auth.email.rawValue.locale(), text: $registerViewModel.emailValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
 
-                    SecureField("Password", text: $registerViewModel.passwordValue)
+                    SecureField(LocaleKeys.Auth.password.rawValue.locale(), text: $registerViewModel.passwordValue)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
@@ -66,13 +66,11 @@ struct RegisterView: View {
                     }
                
                     label: {
-                        Button("Register") {
+                        Button(LocaleKeys.Auth.register.rawValue.locale()) {
                             registerViewModel.register(email: registerViewModel.emailValue, password: registerViewModel.passwordValue) { success in
                                 if success {
                                     redirectToHome = true
                                 } else {
-                                   
-                                    print("Kayıt başarısız oldu")
                                 }
                             }
 
@@ -88,11 +86,11 @@ struct RegisterView: View {
 
                     HStack(spacing: 3) {
 
-                        Text("Already have an account? ")
+                        Text(LocaleKeys.Auth.alreadyAccount.rawValue.locale())
                         NavigationLink {
                             LoginView()
                         } label: {
-                            Text("Sign In")
+                            Text(LocaleKeys.Auth.login.rawValue.locale())
                         }
 
                     }
