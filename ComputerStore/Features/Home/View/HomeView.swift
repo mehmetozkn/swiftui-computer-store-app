@@ -57,22 +57,6 @@ struct ProfileTab: View {
     }
 }
 
-// RegisterPage ve LoginPage sayfalarını tanımlayın
-struct RegisterPage: View {
-    var body: some View {
-        // Register sayfasının içeriğini burada oluşturun
-        Text("Register Page")
-    }
-}
-
-struct LoginPage: View {
-    var body: some View {
-        // Login sayfasının içeriğini burada oluşturun
-        Text("Login Page")
-    }
-}
-
-
 
 private struct CartTab: View {
     @ObservedObject var homeViewModel: HomeViewModel

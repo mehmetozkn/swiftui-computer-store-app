@@ -31,6 +31,20 @@ struct RegisterView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding()
+                    
+                    TextField("Name", text: $registerViewModel.nameValue)
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .textInputAutocapitalization(.never)
+                    
+                    TextField("Surname", text: $registerViewModel.surnameValue)
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+                        .textInputAutocapitalization(.never)
 
                     TextField("Email", text: $registerViewModel.emailValue)
                         .padding()
@@ -38,7 +52,6 @@ struct RegisterView: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
-
 
                     SecureField("Password", text: $registerViewModel.passwordValue)
                         .padding()
