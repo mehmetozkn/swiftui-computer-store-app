@@ -103,7 +103,7 @@ struct RegisterView: View {
         }.navigationDestination(isPresented: $redirectToHome){
             HomeView()
         }
-  
+        
 
         }.toolbar(.hidden, for: .tabBar)
             .toolbar(.hidden, for: .navigationBar)

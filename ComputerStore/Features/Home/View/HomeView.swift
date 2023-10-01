@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct HomeView: View {
 
@@ -24,31 +25,50 @@ struct HomeView: View {
             ProfileTab(homeViewModel: homeViewModel)
 
         }
-        
-       .toolbar(.hidden, for: .navigationBar)
-        
+
+            .toolbar(.hidden, for: .navigationBar)
+
     }
 }
 
 struct ProfileTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @State private var isRegisterPageActive = false
-    @State private var isLoginPageActive = false
+
+    @State private var isLoggedOut = false
 
     var body: some View {
+
         NavigationView {
             VStack {
+                if Auth.auth().currentUser != nil {
 
-                NavigationLink {
-                    RegisterView()
-                } label: {
-                    Text("Register Page")
+                    Text("Profile Page")
+                    
+
+                    NavigationLink(destination: LoginView(), isActive: $isLoggedOut) {
+                        EmptyView()
+                    }
+
+                    Button(action: {
+                        do {
+                            try Auth.auth().signOut()
+                            isLoggedOut = true
+                        } catch {
+                          
+                        }
+                    }) {
+                        Text("Çıkış Yap")
+                    }
+
+                } else {
+
+                    NavigationLink(destination: RegisterView()) {
+                        Text("Register Page")
+                    }
                 }
-                
             }
         }
-        
-            .tabItem {
+        .tabItem {
             HStack {
                 Image(systemName: "person.fill")
             }
