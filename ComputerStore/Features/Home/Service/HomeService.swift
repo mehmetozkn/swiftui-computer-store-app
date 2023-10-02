@@ -82,7 +82,7 @@ class HomeService {
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
+        request.httpMethod = HttpTypes.DELETE.stringValue
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -106,7 +106,7 @@ class HomeService {
         request.httpMethod = requestType.stringValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-
+        
         let parameters: [String: Any] = [
             "userId": 1,
             "productId": productId,

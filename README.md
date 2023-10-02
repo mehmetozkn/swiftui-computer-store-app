@@ -1,6 +1,6 @@
 # swiftui-computer-store-app
 
-Full Stack Computer Store App
+Full Stack Computer Store Project
 
 - [Backend of this project](https://github.com/mehmetozkn/computer-store-app-backend "Backend")
 
