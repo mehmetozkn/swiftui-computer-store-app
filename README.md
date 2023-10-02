@@ -1,6 +1,6 @@
 # swiftui-computer-store-app
 
-SwiftUI Computer Store App
+Full Stack Computer Store App
 
 - [Backend of this project](https://github.com/mehmetozkn/computer-store-app-backend "Backend")
 
@@ -13,6 +13,7 @@ SwiftUI Computer Store App
 - MVVM Design Pattern
 - REST API
 - Kingfisher
+- Firebase Authentication
 
 ### Screens
 
