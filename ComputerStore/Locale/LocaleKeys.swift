@@ -11,7 +11,6 @@ import SwiftUI
 
 struct LocaleKeys {
     enum Home: String {
-        
         case title = "computerStore"
         case completeOrder = "completeOrder"
         case add = "add"
@@ -20,9 +19,7 @@ struct LocaleKeys {
         
     }
     
-
     enum Auth: String {
-        
         case loginTitle = "loginToAcount"
         case registerTitle = "createAccount"
         case email = "email"
@@ -35,6 +32,18 @@ struct LocaleKeys {
         case register = "register"
         
     }
+    
+    enum Profile: String {
+        case changeLanguage = "changeLanguage"
+        case save = "save"
+        case logout = "logout"
+    }
+    
+    enum AppLanguages: String, CaseIterable {
+        case turkish = "turkish"
+        case english = "english"
+    }
+
 }
 
 extension String {

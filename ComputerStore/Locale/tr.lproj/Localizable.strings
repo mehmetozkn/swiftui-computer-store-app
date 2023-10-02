@@ -5,7 +5,9 @@
   Created by Mehmet Özkan on 2.10.2023.
   
 */
-
+// Languages
+"english" = "İngilizce";
+"turkish" = "Türkçe";
 
 "computerStore" = "Bilgisayar Mağazası";
 "completeOrder" = "Siparişi Tamamla";
@@ -24,3 +26,8 @@
 "dontAccount" = "Hesabın yok mu?";
 "login" = "Giriş Yap";
 "register" = "Kayıt ol";
+
+// Profile
+"changeLanguage" = "Dil Değiştir";
+"save" = "Kaydet";
+"logout" = "Çıkış Yap";

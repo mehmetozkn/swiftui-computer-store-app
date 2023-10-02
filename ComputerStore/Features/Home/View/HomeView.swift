@@ -7,13 +7,12 @@
 
 import SwiftUI
 import FirebaseAuth
+import LanguageManagerSwiftUI
 
 struct HomeView: View {
 
     @ObservedObject private var homeViewModel: HomeViewModel = HomeViewModel()
     @State private var number = 0
-
-
 
     var body: some View {
         TabView {
@@ -22,7 +21,7 @@ struct HomeView: View {
 
             CartTab(homeViewModel: homeViewModel)
 
-            ProfileTab(homeViewModel: homeViewModel)
+            ProfileTab()
 
         }
 
@@ -32,49 +31,26 @@ struct HomeView: View {
 }
 
 struct ProfileTab: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-
-    @State private var isLoggedOut = false
-
+    @State private var selectedLanguage: LocaleKeys.AppLanguages = .turkish
+    @EnvironmentObject var languageSettings: LanguageSettings
+    
     var body: some View {
+        
+        VStack {
+            
+            ProfileView(pickerSelectedLanguage: $selectedLanguage)
 
-        NavigationView {
-            VStack {
-                if Auth.auth().currentUser != nil {
-
-                    Text("Profile Page")
-                    
-
-                    NavigationLink(destination: LoginView(), isActive: $isLoggedOut) {
-                        EmptyView()
-                    }
-
-                    Button(action: {
-                        do {
-                            try Auth.auth().signOut()
-                            isLoggedOut = true
-                        } catch {
-                          
-                        }
-                    }) {
-                        Text("Çıkış Yap")
-                    }
-
-                } else {
-
-                    NavigationLink(destination: RegisterView()) {
-                        Text("Register Page")
-                    }
-                }
-            }
-        }
+             }
         .tabItem {
             HStack {
                 Image(systemName: "person.fill")
             }
             Text("Profile")
         }
-    }
+        }
+       
+
+   
 }
 
 

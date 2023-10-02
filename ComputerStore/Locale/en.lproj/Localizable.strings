@@ -6,6 +6,10 @@
   
 */
 
+// Languages
+"english" = "English";
+"turkish" = "Turkish";
+
 // Home
 "computerStore" = "Computer Store";
 "completeOrder" = "Complete Order";
@@ -24,3 +28,8 @@
 "dontAccount" = "Don't have an account yet?";
 "login" = "Login";
 "register" = "Register";
+
+// Profile
+"changeLanguage" = "Change Language";
+"save" = "Save";
+"logout" = "Logout";

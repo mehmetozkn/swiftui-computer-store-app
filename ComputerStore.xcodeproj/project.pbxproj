@@ -26,6 +26,7 @@
 		85D8071C2AC8ABFD00E54AD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D8071B2AC8ABFC00E54AD4 /* GoogleService-Info.plist */; };
 		85D807202AC8BD0700E54AD4 /* AuthErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8071F2AC8BD0700E54AD4 /* AuthErrorEnum.swift */; };
 		85D807222AC8BD1300E54AD4 /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D807212AC8BD1300E54AD4 /* NetworkErrorEnum.swift */; };
+		85DCD8362ACAC8D8007B9A98 /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 85DCD8352ACAC8D8007B9A98 /* LanguageManagerSwiftUI */; };
 		85E772422ABB97B2001DA5A1 /* ComputerStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E772412ABB97B2001DA5A1 /* ComputerStoreApp.swift */; };
 		85E772442ABB97B2001DA5A1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E772432ABB97B2001DA5A1 /* HomeView.swift */; };
 		85E772462ABB97B3001DA5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85E772452ABB97B3001DA5A1 /* Assets.xcassets */; };
@@ -130,6 +131,7 @@
 				85EC40322AC77DC700DA8BEC /* FirebaseAppDistribution-Beta in Frameworks */,
 				85EC40562AC77DC800DA8BEC /* FirebaseRemoteConfig in Frameworks */,
 				85EC405A2AC77DC800DA8BEC /* FirebaseStorage in Frameworks */,
+				85DCD8362ACAC8D8007B9A98 /* LanguageManagerSwiftUI in Frameworks */,
 				85EC40362AC77DC700DA8BEC /* FirebaseAuthCombine-Community in Frameworks */,
 				85EC405C2AC77DC800DA8BEC /* FirebaseStorageCombine-Community in Frameworks */,
 				85EC404A2AC77DC700DA8BEC /* FirebaseInAppMessaging-Beta in Frameworks */,
@@ -436,6 +438,7 @@
 				85EC40572AC77DC800DA8BEC /* FirebaseRemoteConfigSwift */,
 				85EC40592AC77DC800DA8BEC /* FirebaseStorage */,
 				85EC405B2AC77DC800DA8BEC /* FirebaseStorageCombine-Community */,
+				85DCD8352ACAC8D8007B9A98 /* LanguageManagerSwiftUI */,
 			);
 			productName = ComputerStore;
 			productReference = 85E7723E2ABB97B2001DA5A1 /* ComputerStore.app */;
@@ -470,6 +473,7 @@
 				858416802AC42CC60098EDB8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				858416852AC435340098EDB8 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				85EC40262AC77DC700DA8BEC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				85DCD8342ACAC8D8007B9A98 /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */,
 			);
 			productRefGroup = 85E7723F2ABB97B2001DA5A1 /* Products */;
 			projectDirPath = "";
@@ -758,6 +762,14 @@
 				minimumVersion = 5.8.0;
 			};
 		};
+		85DCD8342ACAC8D8007B9A98 /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Abedalkareem/LanguageManager-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 		85EC40262AC77DC700DA8BEC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -778,6 +790,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 858416852AC435340098EDB8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		85DCD8352ACAC8D8007B9A98 /* LanguageManagerSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85DCD8342ACAC8D8007B9A98 /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */;
+			productName = LanguageManagerSwiftUI;
 		};
 		85EC40272AC77DC700DA8BEC /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
