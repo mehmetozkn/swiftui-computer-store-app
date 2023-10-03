@@ -24,7 +24,6 @@ struct HomeView: View {
             ProfileTab()
 
         }
-
             .toolbar(.hidden, for: .navigationBar)
 
     }
@@ -48,9 +47,7 @@ struct ProfileTab: View {
             Text("Profile")
         }
         }
-       
-
-   
+    
 }
 
 
@@ -139,10 +136,10 @@ private struct CartTab: View {
                         .cornerRadius(10)
 
                 }.listStyle(GroupedListStyle.init())
-               Text(LocaleKeys.Home.totalPrice.rawValue.locale())
+                
+                Text(LocaleKeys.Home.totalPrice.rawValue.locale())
 
-                Text("\(LocaleKeys.Home.totalPrice.rawValue): $ \(homeViewModel.totalAmount, specifier: "%.2f")")
-
+                Text(homeViewModel.totalAmount)
 
                 Spacer()
 

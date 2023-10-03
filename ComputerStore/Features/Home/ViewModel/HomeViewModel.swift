@@ -14,7 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var cartProducts = [CartProductModel]()
     private let homeService = HomeService()
     @Published var cartItemCount = 0
-    @Published var totalAmount: Double = 0
+    @Published var totalAmount: String = ""
 
 
     init() {
@@ -25,12 +25,17 @@ class HomeViewModel: ObservableObject {
 
 
     func calculateTotalPrice() {
-        totalAmount = 0
+        var totalPrice: Double = 0
+        totalAmount = "\(LocaleKeys.Home.totalPrice.rawValue): $ \(String(format: "%.2f", totalPrice))"
+        
         for product in self.cartProducts {
             let productPrice = product.product.price
             let productQuantity = product.quantity
-            totalAmount += Double(productPrice * productQuantity)
+            totalPrice += Double(productPrice * productQuantity)
         }
+        
+        totalAmount = "\(String(format: "%.2f", totalPrice))"
+
     }
 
     func clearBasket() {
@@ -39,6 +44,7 @@ class HomeViewModel: ObservableObject {
                case .success(true):
                    DispatchQueue.main.async {
                        self.cartProducts = []
+                       self.getProductCountByUserId()
                    }
                    
                case .failure(let error):
@@ -76,7 +82,9 @@ class HomeViewModel: ObservableObject {
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
                         self.cartProducts = cartProducts
+                        self.calculateTotalPrice()
                     }
+                   
                 }
 
             case .failure(let error):
@@ -111,8 +119,6 @@ class HomeViewModel: ObservableObject {
                     self.getUserProducts()
 
                     self.getProductCountByUserId()
-
-                    self.calculateTotalPrice()
                     
                 }
             case .failure(let error):

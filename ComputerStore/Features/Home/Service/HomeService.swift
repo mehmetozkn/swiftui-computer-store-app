@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class HomeService {
     
     private let baseUrl = "http://localhost:8080/v1/"

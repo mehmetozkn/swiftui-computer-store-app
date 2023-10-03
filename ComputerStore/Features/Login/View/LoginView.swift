@@ -47,7 +47,8 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
 
-                
+                    
+                    
                     NavigationLink {
                         EmptyView()
                     }
