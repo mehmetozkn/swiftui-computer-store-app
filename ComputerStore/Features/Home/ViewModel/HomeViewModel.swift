@@ -14,7 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var cartProducts = [CartProductModel]()
     private let homeService = HomeService()
     @Published var cartItemCount = 0
-    @Published var totalAmount: String = ""
+    @Published var totalPrice: Double = 0
 
 
     init() {
@@ -25,8 +25,7 @@ class HomeViewModel: ObservableObject {
 
 
     func calculateTotalPrice() {
-        var totalPrice: Double = 0
-        totalAmount = "\(LocaleKeys.Home.totalPrice.rawValue): $ \(String(format: "%.2f", totalPrice))"
+        totalPrice = 0
         
         for product in self.cartProducts {
             let productPrice = product.product.price
@@ -34,7 +33,6 @@ class HomeViewModel: ObservableObject {
             totalPrice += Double(productPrice * productQuantity)
         }
         
-        totalAmount = "\(String(format: "%.2f", totalPrice))"
 
     }
 

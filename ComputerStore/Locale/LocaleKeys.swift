@@ -43,6 +43,12 @@ struct LocaleKeys {
         case turkish = "turkish"
         case english = "english"
     }
+    
+    enum TabItems: String {
+        case home = "home"
+        case cart = "cart"
+        case profile = "profile"
+    }
 
 }
 

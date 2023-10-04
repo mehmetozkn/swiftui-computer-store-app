@@ -12,7 +12,6 @@ import LanguageManagerSwiftUI
 struct HomeView: View {
 
     @ObservedObject private var homeViewModel: HomeViewModel = HomeViewModel()
-    @State private var number = 0
 
     var body: some View {
         TabView {
@@ -31,7 +30,6 @@ struct HomeView: View {
 
 struct ProfileTab: View {
     @State private var selectedLanguage: LocaleKeys.AppLanguages = .turkish
-    @EnvironmentObject var languageSettings: LanguageSettings
     
     var body: some View {
         
@@ -44,7 +42,7 @@ struct ProfileTab: View {
             HStack {
                 Image(systemName: "person.fill")
             }
-            Text("Profile")
+            Text(LocaleKeys.TabItems.profile.rawValue.locale())
         }
         }
     
@@ -138,8 +136,9 @@ private struct CartTab: View {
                 }.listStyle(GroupedListStyle.init())
                 
                 Text(LocaleKeys.Home.totalPrice.rawValue.locale())
+                    .foregroundStyle(.green)
 
-                Text(homeViewModel.totalAmount)
+                Text(String("$ \(homeViewModel.totalPrice)"))
 
                 Spacer()
 
@@ -171,7 +170,7 @@ private struct CartTab: View {
 
                 }
             }
-            Text("Cart")
+                Text(LocaleKeys.TabItems.cart.rawValue.locale())
         }
             .badge(homeViewModel.cartItemCount)
             .onAppear {
@@ -248,7 +247,7 @@ private struct HomeTab: View {
         }
             .tabItem {
             Image(systemName: "house")
-            Text("Home")
+                Text(LocaleKeys.TabItems.home.rawValue.locale())
                 .onAppear {
                 homeViewModel.getProductCountByUserId()
 

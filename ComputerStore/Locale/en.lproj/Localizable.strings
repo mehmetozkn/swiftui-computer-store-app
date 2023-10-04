@@ -17,6 +17,11 @@
 "totalPrice" = "Total Price";
 "emptyCart" = "There are no items in your cart";
 
+// Tab Items
+"home" = "Home";
+"cart" = "Cart";
+"profile" = "Profile";
+
 // Auth => Login - Register
 "loginToAcount" = "Login to Account";
 "createAccount" = "Create Account";

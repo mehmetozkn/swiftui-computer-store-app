@@ -6,7 +6,8 @@ Full Stack Computer Store Project
 
 ### Summary
 
-- This project provides to add product to basket for existing users
+- User can create account
+- Logged in users can view the products, add products to their cart, remove items from their cart, see the total amount and complete their order.
 
 ### Includes
 

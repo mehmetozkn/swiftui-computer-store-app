@@ -5,15 +5,22 @@
   Created by Mehmet Özkan on 2.10.2023.
   
 */
+
 // Languages
 "english" = "İngilizce";
 "turkish" = "Türkçe";
 
+// Home
 "computerStore" = "Bilgisayar Mağazası";
 "completeOrder" = "Siparişi Tamamla";
 "add" = "Ekle";
 "totalPrice" = "Toplam Fiyat";
-"emptyCart" = "Sepetiniz Ürün Yok";
+"emptyCart" = "Sepetinizde Ürün Yok";
+
+// Tab Ttems
+"home" = "Ana Sayfa";
+"cart" = "Sepet";
+"profile" = "Profil";
 
 // Auth => Login - Register
 "loginToAcount" = "Hesaba Giriş Yap";
