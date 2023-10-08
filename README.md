@@ -6,7 +6,7 @@ Full Stack Computer Store Project
 
 ### Summary
 
-- User can create account
+- User can create account and login
 - Logged in users can view the products, add products to their cart, remove items from their cart, see the total amount and complete their order.
 
 ### Includes
