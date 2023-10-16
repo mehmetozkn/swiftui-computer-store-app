@@ -7,10 +7,19 @@
 
 import Foundation
 
-class HomeService {
-    
+protocol IHomeService {
+    func fetchProducts(path: HttpPaths, completion: @escaping (Result<[ProductModel]?, NetworkException>) -> Void)
+    func fetchUserProducts(path: HttpPaths, completion: @escaping (Result<[CartProductModel]?, NetworkException>) -> Void)
+    func fetchProductCountByUserId(path: HttpPaths, completion: @escaping (Result<Int, NetworkException>) -> Void)
+    func clearBasket(path: HttpPaths, completion: @escaping (Result<Bool, NetworkException>) -> Void)
+    func addProductToCart(path: HttpPaths, productId: Int, quantity: Int, completion: @escaping (Result<HTTPURLResponse, NetworkException>) -> Void)
+}
+
+
+struct HomeService: IHomeService {
+
     private let baseUrl = "http://localhost:8080/v1/"
-  
+
     func fetchProducts(path: HttpPaths, completion: @escaping (Result<[ProductModel]?, NetworkException>) -> Void) {
         guard let url = URL(string: baseUrl + path.rawValue) else {
             return completion(.failure(.notFound))
@@ -75,7 +84,7 @@ class HomeService {
         }.resume()
     }
 
-    func clearBasket(path: HttpPaths, completion: @escaping (Result<Bool, NetworkException>) -> Void)  {
+    func clearBasket(path: HttpPaths, completion: @escaping (Result<Bool, NetworkException>) -> Void) {
         guard let url = URL(string: baseUrl + path.rawValue) else {
             return
         }
@@ -86,7 +95,7 @@ class HomeService {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(.invalidResponse))
-                
+
             } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                 completion(.success(true))
 
@@ -105,7 +114,7 @@ class HomeService {
         request.httpMethod = requestType.stringValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        
+
         let parameters: [String: Any] = [
             "userId": 1,
             "productId": productId,
@@ -126,7 +135,7 @@ class HomeService {
 
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                  
+
                     return completion(.success(httpResponse))
 
                 } else {
@@ -135,7 +144,7 @@ class HomeService {
             } else {
                 return completion(.failure(.invalidResponse))
             }
-            
+
 
         }.resume()
     }
