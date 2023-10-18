@@ -16,7 +16,7 @@ protocol IHomeService {
 }
 
 
-struct HomeService: IHomeService {
+class HomeService: IHomeService {
 
     private let baseUrl = "http://localhost:8080/v1/"
 

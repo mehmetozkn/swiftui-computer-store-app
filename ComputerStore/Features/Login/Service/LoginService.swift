@@ -8,9 +8,11 @@
 import Foundation
 import FirebaseAuth
 
-class LoginService {
-    
-    
+protocol ILoginService {
+    func login(email: String, password: String, completion: @escaping (Bool) -> Void)
+}
+
+class LoginService  : ILoginService {
     
     func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
       

@@ -8,7 +8,11 @@
 import Foundation
 import FirebaseAuth
 
-class RegisterService {
+protocol IRegisterService {
+    func register(email: String, password: String, completion: @escaping (Bool) -> Void)
+}
+
+class RegisterService : IRegisterService {
     
     func register(email: String, password: String, completion: @escaping (Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
