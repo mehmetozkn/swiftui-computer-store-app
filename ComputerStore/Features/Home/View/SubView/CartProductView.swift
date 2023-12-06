@@ -77,7 +77,7 @@ struct CartProductView: View {
             .padding()
             .frame(height: UIScreen.screenHeight * 0.2)
             .background(Color.gray.opacity(0.5))
-            .cornerRadius(10)
+            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
     }
 }
 

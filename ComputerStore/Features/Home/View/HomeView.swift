@@ -31,6 +31,8 @@ struct HomeView: View {
 struct ProfileTab: View {
     @State private var selectedLanguage: LocaleKeys.AppLanguages = .turkish
     
+    private let iconSystemName = "person.fill"
+    
     var body: some View {
         
         VStack {
@@ -40,7 +42,7 @@ struct ProfileTab: View {
              }
         .tabItem {
             HStack {
-                Image(systemName: "person.fill")
+                Image(systemName: iconSystemName)
             }
             Text(LocaleKeys.TabItems.profile.rawValue.locale())
         }
@@ -51,6 +53,10 @@ struct ProfileTab: View {
 
 private struct CartTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    
+    private let iconSystemName = "cart"
+    
+    private let buttonWidthSize  = UIScreen.screenWidth * 0.4
 
     var body: some View {
 
@@ -82,13 +88,13 @@ private struct CartTab: View {
                 }, label: {
 
                     Text(LocaleKeys.Home.completeOrder.rawValue.locale())
-                            .frame(width: UIScreen.screenWidth * 0.4)
+                            .frame(width: buttonWidthSize)
                             .background(Color.blue)
                             .foregroundStyle(.white)
                             .bold()
-                            .cornerRadius(8)
+                            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
                             .overlay(
-                            RoundedRectangle(cornerRadius: 8)
+                            RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
                                 .stroke(Color.blue, lineWidth: 6)
                         )
                     })
@@ -99,7 +105,7 @@ private struct CartTab: View {
 
             .tabItem {
             HStack {
-                Image(systemName: "cart")
+                Image(systemName: iconSystemName)
                     .onTapGesture {
 
                 }
@@ -116,6 +122,8 @@ private struct CartTab: View {
 
 private struct HomeTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    
+    private let iconSystemName = "house"
 
     var body: some View {
         VStack {
@@ -132,7 +140,7 @@ private struct HomeTab: View {
 
         }
             .tabItem {
-            Image(systemName: "house")
+            Image(systemName: iconSystemName)
                 Text(LocaleKeys.TabItems.home.rawValue.locale())
                 .onAppear {
                 homeViewModel.getProductCountByUserId()

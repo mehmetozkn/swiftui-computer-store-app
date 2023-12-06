@@ -12,7 +12,6 @@ class ProfileViewModel: ObservableObject  {
     
     @Published var isLoggedOut = false
 
-
     func logout() {
         isLoggedOut = true
     }

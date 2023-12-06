@@ -12,19 +12,12 @@ struct LoginView: View {
     @ObservedObject var loginViewModel: LoginViewModel = LoginViewModel()
     
     @State private var redirectToHome = false
-
+ 
     var body: some View {
         
         NavigationStack {
             ZStack {
-                Color.blue
-                    .ignoresSafeArea()
-                Circle()
-                    .scale(1.7)
-                    .foregroundColor(.white.opacity(0.15))
-                Circle()
-                    .scale(1.35)
-                    .foregroundColor(.white)
+                AuthScreenView()
 
                 VStack {
                     Text(LocaleKeys.Auth.loginTitle.rawValue.locale())
@@ -34,17 +27,17 @@ struct LoginView: View {
 
                     TextField(LocaleKeys.Auth.email.rawValue.locale(), text: $loginViewModel.emailValue)
                         .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
+                        .frame(width: AppConstants.Sizes.textFieldWidthSize, height: AppConstants.Sizes.textFieldHeightSize)
+                        .background(Color.black.opacity(AppConstants.Theme.textFieldOpacityValue))
+                        .cornerRadius(AppConstants.Radius.cornerRadiusValue)
                         .textInputAutocapitalization(.never)
 
 
                     SecureField(LocaleKeys.Auth.password.rawValue.locale(), text: $loginViewModel.passwordValue)
                         .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
+                        .frame(width: AppConstants.Sizes.textFieldWidthSize, height: AppConstants.Sizes.textFieldHeightSize)
+                        .background(Color.black.opacity(AppConstants.Theme.textFieldOpacityValue))
+                        .cornerRadius(AppConstants.Radius.cornerRadiusValue)
                         .textInputAutocapitalization(.never)
 
                     
@@ -65,9 +58,9 @@ struct LoginView: View {
 
                         }
                             .foregroundColor(.white)
-                            .frame(width: 300, height: 50)
+                            .frame(width: AppConstants.Sizes.buttonWidthSize, height: AppConstants.Sizes.buttonHeightSize)
                             .background(Color.blue)
-                            .cornerRadius(10)
+                            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
 
 
                     }

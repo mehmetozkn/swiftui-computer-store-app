@@ -50,7 +50,7 @@
                             }
                             .foregroundColor(.black)
                                 .pickerStyle(.menu)
-                                .frame(width:  UIScreen.screenWidth * 0.7)
+                                .frame(width: UIScreen.screenWidth * 0.7)
                                
 
 
@@ -64,7 +64,7 @@
                                 .padding()
                                 .frame(width:  UIScreen.screenWidth * 0.7, height: UIScreen.screenHeight * 0.05)
                                 .background(Color.blue.opacity(0.8))
-                                .cornerRadius(10)
+                                .cornerRadius(AppConstants.Radius.cornerRadiusValue)
 
                         } else {
                             

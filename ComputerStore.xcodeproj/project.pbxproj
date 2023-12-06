@@ -20,11 +20,12 @@
 		856CFEA02AC76C89001798B2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CFE9F2AC76C89001798B2 /* LoginViewModel.swift */; };
 		856CFEA22AC76C8F001798B2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CFEA12AC76C8F001798B2 /* LoginView.swift */; };
 		856CFEA42AC76C98001798B2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CFEA32AC76C98001798B2 /* LoginService.swift */; };
-		856CFEA72AC76CE0001798B2 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CFEA62AC76CE0001798B2 /* ProfileService.swift */; };
 		858416822AC42CC60098EDB8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 858416812AC42CC60098EDB8 /* Kingfisher */; };
 		858416842AC433BE0098EDB8 /* HttpPathsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858416832AC433BE0098EDB8 /* HttpPathsEnum.swift */; };
 		858416872AC435340098EDB8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 858416862AC435340098EDB8 /* Alamofire */; };
 		859171092ABDDA890023DEDB /* CartProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859171082ABDDA890023DEDB /* CartProductModel.swift */; };
+		85B018132B212343008D3070 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B018122B212343008D3070 /* AppConstants.swift */; };
+		85B018152B21251D008D3070 /* AuthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B018142B21251D008D3070 /* AuthScreenView.swift */; };
 		85D8071C2AC8ABFD00E54AD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D8071B2AC8ABFC00E54AD4 /* GoogleService-Info.plist */; };
 		85D807202AC8BD0700E54AD4 /* AuthErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D8071F2AC8BD0700E54AD4 /* AuthErrorEnum.swift */; };
 		85D807222AC8BD1300E54AD4 /* NetworkErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D807212AC8BD1300E54AD4 /* NetworkErrorEnum.swift */; };
@@ -64,9 +65,10 @@
 		856CFE9F2AC76C89001798B2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		856CFEA12AC76C8F001798B2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		856CFEA32AC76C98001798B2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		856CFEA62AC76CE0001798B2 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		858416832AC433BE0098EDB8 /* HttpPathsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPathsEnum.swift; sourceTree = "<group>"; };
 		859171082ABDDA890023DEDB /* CartProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductModel.swift; sourceTree = "<group>"; };
+		85B018122B212343008D3070 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		85B018142B21251D008D3070 /* AuthScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenView.swift; sourceTree = "<group>"; };
 		85D8071B2AC8ABFC00E54AD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85D8071F2AC8BD0700E54AD4 /* AuthErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorEnum.swift; sourceTree = "<group>"; };
 		85D807212AC8BD1300E54AD4 /* NetworkErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorEnum.swift; sourceTree = "<group>"; };
@@ -160,7 +162,6 @@
 		856CFE8A2AC7643E001798B2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				856CFEA52AC76CD5001798B2 /* Service */,
 				856CFE8D2AC76476001798B2 /* ViewModel */,
 				856CFE8C2AC76472001798B2 /* View */,
 				856CFE8B2AC7646E001798B2 /* Model */,
@@ -226,20 +227,21 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		856CFEA52AC76CD5001798B2 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				856CFEA62AC76CE0001798B2 /* ProfileService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		85774D332AC5A6A500494482 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				85F04FFA2ABCA65C009CB1BB /* ComputerImageView.swift */,
+				85B018142B21251D008D3070 /* AuthScreenView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		85B018112B212336008D3070 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				85B018122B212343008D3070 /* AppConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		85D1305B2ABB98380038D2F0 /* ViewModel */ = {
@@ -339,6 +341,7 @@
 		85F050022ABCA915009CB1BB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				85B018112B212336008D3070 /* Constants */,
 				85774D332AC5A6A500494482 /* Components */,
 				85F050102ABCB1EB009CB1BB /* Enums */,
 				85F050062ABCACE5009CB1BB /* Extensions */,
@@ -470,6 +473,7 @@
 				859171092ABDDA890023DEDB /* CartProductModel.swift in Sources */,
 				85D807222AC8BD1300E54AD4 /* NetworkErrorEnum.swift in Sources */,
 				856CFE9A2AC76C2D001798B2 /* ProfileView.swift in Sources */,
+				85B018152B21251D008D3070 /* AuthScreenView.swift in Sources */,
 				85E772422ABB97B2001DA5A1 /* ComputerStoreApp.swift in Sources */,
 				858416842AC433BE0098EDB8 /* HttpPathsEnum.swift in Sources */,
 				856CFEA42AC76C98001798B2 /* LoginService.swift in Sources */,
@@ -480,8 +484,8 @@
 				856CFEA22AC76C8F001798B2 /* LoginView.swift in Sources */,
 				851843AF2AE47A4B002EEBEE /* CartProductView.swift in Sources */,
 				85F050082ABCAEA8009CB1BB /* ProductModel.swift in Sources */,
+				85B018132B212343008D3070 /* AppConstants.swift in Sources */,
 				851843AD2AE47820002EEBEE /* ProductView.swift in Sources */,
-				856CFEA72AC76CE0001798B2 /* ProfileService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

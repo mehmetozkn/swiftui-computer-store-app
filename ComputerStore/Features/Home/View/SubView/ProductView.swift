@@ -46,9 +46,9 @@ struct ProductView: View {
                                 .background(Color.blue)
                                 .foregroundStyle(.black)
                                 .bold()
-                                .cornerRadius(8)
+                                .cornerRadius(AppConstants.Radius.cornerRadiusValue)
                                 .overlay(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
                                     .stroke(Color.blue, lineWidth: 6)
                             )
                         })
@@ -60,7 +60,7 @@ struct ProductView: View {
             .padding()
             .frame(height: UIScreen.screenHeight * 0.2)
             .background(Color.gray.opacity(0.5))
-            .cornerRadius(10)
+            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
     }
 }
 
