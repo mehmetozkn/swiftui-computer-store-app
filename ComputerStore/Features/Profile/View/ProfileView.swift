@@ -18,7 +18,7 @@
         
         @Binding var pickerSelectedLanguage: LocaleKeys.AppLanguages
 
-
+     
         var body: some View {
 
             VStack {
@@ -26,22 +26,19 @@
                 NavigationView {
                     VStack {
                         if Auth.auth().currentUser != nil {
+                            NavigationLink(destination: LoginView()) {
+                                Button(action: {
+                                    do {
+                                        try Auth.auth().signOut()
+                                        profileViewModel.logout()
+                                    } catch {
 
-                            NavigationLink(destination: LoginView(), isActive: $profileViewModel.isLoggedOut) {
-                                EmptyView()
-                            }
-
-                            Button(action: {
-                                do {
-                                    try Auth.auth().signOut()
-                                    profileViewModel.logout()
-                                } catch {
-
+                                    }
+                                }) {
+                                    Text(LocaleKeys.Profile.logout.rawValue.locale())
                                 }
-                            }) {
-                                Text(LocaleKeys.Profile.logout.rawValue.locale())
                             }
-                            
+
                             Picker("", selection: $pickerSelectedLanguage) {
                                 ForEach(LocaleKeys.AppLanguages.allCases, id: \.self) { language in
                                     Text(language.rawValue.locale())
@@ -50,7 +47,7 @@
                             }
                             .foregroundColor(.black)
                                 .pickerStyle(.menu)
-                                .frame(width: UIScreen.screenWidth * 0.7)
+                                .frame(width: AppConstants.Sizes.generalButtonWidthSize)
                                
 
 
@@ -62,8 +59,8 @@
                                     .bold()
                                 })
                                 .padding()
-                                .frame(width:  UIScreen.screenWidth * 0.7, height: UIScreen.screenHeight * 0.05)
-                                .background(Color.blue.opacity(0.8))
+                                .frame(width:   AppConstants.Sizes.generalButtonWidthSize, height:  AppConstants.Sizes.generalButtonHeightSize)
+                                .background(Color.blue.opacity(AppConstants.Theme.backgroundOpacityValue))
                                 .cornerRadius(AppConstants.Radius.cornerRadiusValue)
 
                         } else {

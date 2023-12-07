@@ -42,7 +42,7 @@ struct ProductView: View {
                     },
                         label: {
                         Text(LocaleKeys.Home.add.rawValue.locale())
-                                .frame(width: UIScreen.screenWidth * 0.12)
+                            .frame(width: AppConstants.Sizes.addButtonWidthSize)
                                 .background(Color.blue)
                                 .foregroundStyle(.black)
                                 .bold()
@@ -58,8 +58,8 @@ struct ProductView: View {
             Spacer()
         }
             .padding()
-            .frame(height: UIScreen.screenHeight * 0.2)
-            .background(Color.gray.opacity(0.5))
+            .frame(height: AppConstants.Sizes.cartViewHeightSize)
+            .background(Color.gray.opacity(AppConstants.Theme.backgroundOpacityValue))
             .cornerRadius(AppConstants.Radius.cornerRadiusValue)
     }
 }

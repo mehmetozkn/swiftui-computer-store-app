@@ -69,7 +69,7 @@ struct RegisterView: View {
 
                         }
                             .foregroundColor(.white)
-                            .frame(width: AppConstants.Sizes.buttonWidthSize, height: AppConstants.Sizes.buttonHeightSize)
+                            .frame(width: AppConstants.Sizes.generalButtonWidthSize, height: AppConstants.Sizes.generalButtonHeightSize)
                             .background(Color.blue)
                             .cornerRadius(AppConstants.Radius.cornerRadiusValue)
 
