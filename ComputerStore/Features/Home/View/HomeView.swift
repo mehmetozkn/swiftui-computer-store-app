@@ -30,6 +30,7 @@ struct HomeView: View {
 
 struct ProfileTab: View {
     @State private var selectedLanguage: LocaleKeys.AppLanguages = .turkish
+    let iconSystemName = "person.fill"
     
     private let iconSystemName = "person.fill"
     
@@ -53,10 +54,14 @@ struct ProfileTab: View {
 
 private struct CartTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
+<<<<<<< Updated upstream
     
     private let iconSystemName = "cart"
     
     private let buttonWidthSize  = UIScreen.screenWidth * 0.4
+=======
+    let iconSystemName = "cart"
+>>>>>>> Stashed changes
 
     var body: some View {
 
@@ -88,6 +93,7 @@ private struct CartTab: View {
                 }, label: {
 
                     Text(LocaleKeys.Home.completeOrder.rawValue.locale())
+<<<<<<< Updated upstream
                             .frame(width: buttonWidthSize)
                             .background(Color.blue)
                             .foregroundStyle(.white)
@@ -96,6 +102,16 @@ private struct CartTab: View {
                             .overlay(
                             RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
                                 .stroke(Color.blue, lineWidth: 6)
+=======
+                        .frame(width: AppConstants.Sizes.generalButtonWidthValue)
+                            .background(Color.blue)
+                            .foregroundStyle(.white)
+                            .bold()
+                            .cornerRadius(AppConstants.Radius.radiusValue)
+                            .overlay(
+                            RoundedRectangle(cornerRadius: AppConstants.Radius.radiusValue)
+                                .stroke(Color.blue, lineWidth: AppConstants.Theme.buttonLineWidthValue)
+>>>>>>> Stashed changes
                         )
                     })
 
@@ -122,8 +138,12 @@ private struct CartTab: View {
 
 private struct HomeTab: View {
     @ObservedObject var homeViewModel: HomeViewModel
+<<<<<<< Updated upstream
     
     private let iconSystemName = "house"
+=======
+    let iconSystemName = "house"
+>>>>>>> Stashed changes
 
     var body: some View {
         VStack {

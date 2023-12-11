@@ -47,7 +47,11 @@
                             }
                             .foregroundColor(.black)
                                 .pickerStyle(.menu)
+<<<<<<< Updated upstream
                                 .frame(width: AppConstants.Sizes.generalButtonWidthSize)
+=======
+                                .frame(width: AppConstants.Sizes.generalButtonWidthValue)
+>>>>>>> Stashed changes
                                
 
 
@@ -59,9 +63,15 @@
                                     .bold()
                                 })
                                 .padding()
+<<<<<<< Updated upstream
                                 .frame(width:   AppConstants.Sizes.generalButtonWidthSize, height:  AppConstants.Sizes.generalButtonHeightSize)
                                 .background(Color.blue.opacity(AppConstants.Theme.backgroundOpacityValue))
                                 .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+=======
+                                .frame(width: UIScreen.screenWidth * AppConstants.Sizes.generalButtonWidthValue, height: AppConstants.Sizes.generalButtonHeightValue)
+                                .background(Color.blue.opacity(AppConstants.Theme.buttonOpacityValue))
+                                .cornerRadius(AppConstants.Radius.radiusValue)
+>>>>>>> Stashed changes
 
                         } else {
                             

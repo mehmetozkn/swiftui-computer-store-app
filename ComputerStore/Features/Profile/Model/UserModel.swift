@@ -19,5 +19,4 @@ struct UserModel : Codable {
            case surname = "surname"
            case email = "email"
        }
-    
 }

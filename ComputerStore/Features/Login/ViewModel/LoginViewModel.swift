@@ -19,9 +19,10 @@ class LoginViewModel : ObservableObject {
         loginService.login(email: email, password: password) { success in
             if success {
                 self.isLogged = true
+                completion(success)
+            } else {
+                completion(false)
             }
-            completion(success)
         }
     }
-    
 }

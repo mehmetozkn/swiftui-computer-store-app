@@ -9,5 +9,6 @@ import Foundation
 
 enum AuthError: Error {
     case emailAlreadyInUse
+    case incorrectPassword
 
 }

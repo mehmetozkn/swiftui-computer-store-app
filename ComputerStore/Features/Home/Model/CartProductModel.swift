@@ -5,8 +5,6 @@
 //  Created by Mehmet Özkan on 22.09.2023.
 //
 
-import Foundation
-
 
 struct CartProductModel : Codable {
     var id: Int
