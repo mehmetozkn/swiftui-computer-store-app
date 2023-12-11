@@ -8,89 +8,65 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+
     @ObservedObject var loginViewModel: LoginViewModel = LoginViewModel()
-    
+
     @State private var redirectToHome = false
- 
+
     var body: some View {
-        
+
         NavigationStack {
             ZStack {
                 AuthScreenView()
 
                 VStack {
-                    Text(LocaleKeys.Auth.loginTitle.rawValue.locale())
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
+                    LocalizedTitleTextView(text: LocaleKeys.Auth.loginTitle.rawValue.locale())
+                   
+                    CustomTextFieldView(placeholder: LocaleKeys.Auth.email.rawValue.locale(), text: $loginViewModel.emailValue)
 
-                    TextField(LocaleKeys.Auth.email.rawValue.locale(), text: $loginViewModel.emailValue)
-                        .padding()
-                        .frame(width: AppConstants.Sizes.textFieldWidthSize, height: AppConstants.Sizes.textFieldHeightSize)
-                        .background(Color.black.opacity(AppConstants.Theme.textFieldOpacityValue))
-                        .cornerRadius(AppConstants.Radius.cornerRadiusValue)
-                        .textInputAutocapitalization(.never)
+              
+                    CustomSecureFieldView(placeholder: LocaleKeys.Auth.password.rawValue.locale(), text: $loginViewModel.passwordValue)
 
+                    CustomButtonView(title: LocaleKeys.Auth.login.rawValue.locale()) {
+                        loginViewModel.login(email: loginViewModel.emailValue, password: loginViewModel.passwordValue) { success in
+                            if success {
+                                redirectToHome = true
+                            } else {
 
-                    SecureField(LocaleKeys.Auth.password.rawValue.locale(), text: $loginViewModel.passwordValue)
-                        .padding()
-                        .frame(width: AppConstants.Sizes.textFieldWidthSize, height: AppConstants.Sizes.textFieldHeightSize)
-                        .background(Color.black.opacity(AppConstants.Theme.textFieldOpacityValue))
-                        .cornerRadius(AppConstants.Radius.cornerRadiusValue)
-                        .textInputAutocapitalization(.never)
-
-                    
-                    
-                    NavigationLink {
-                        EmptyView()
-                    }
-               
-                    label: {
-                        Button(LocaleKeys.Auth.login.rawValue.locale()) {
-                            loginViewModel.login(email: loginViewModel.emailValue, password: loginViewModel.passwordValue) { success in
-                                if success {
-                                    redirectToHome = true
-                                } else {
-                                    
-                                }
                             }
-
-                        }
-                            .foregroundColor(.white)
-                            .frame(width: AppConstants.Sizes.generalButtonWidthSize, height: AppConstants.Sizes.generalButtonHeightSize)
-                            .background(Color.blue)
-                            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
-
-
-                    }
-
-
-                    HStack(spacing: 3) {
-
-                        Text(LocaleKeys.Auth.dontAccount.rawValue.locale())
-                        NavigationLink {
-                            RegisterView()
-                        } label: {
-                            Text(LocaleKeys.Auth.register.rawValue.locale())
                         }
 
-                    }
+                    } 
+
+
+                    BackRegisterTextView()
 
                 }
-            
-            
-        }.navigationDestination(isPresented: $redirectToHome){
-            HomeView()
-        }
-  
+
+
+            }.navigationDestination(isPresented: $redirectToHome) {
+                HomeView()
+            }
 
         }.toolbar(.hidden, for: .tabBar)
             .toolbar(.hidden, for: .navigationBar)
-        
 
     }
 }
+
 #Preview {
     LoginView()
+}
+
+struct BackRegisterTextView: View {
+    var body: some View {
+        HStack(spacing: AppConstants.Sizes.authTextSpacingValue) {
+            Text(LocaleKeys.Auth.dontAccount.rawValue.locale())
+            NavigationLink {
+                RegisterView()
+            } label: {
+                Text(LocaleKeys.Auth.register.rawValue.locale())
+            }
+        }
+    }
 }

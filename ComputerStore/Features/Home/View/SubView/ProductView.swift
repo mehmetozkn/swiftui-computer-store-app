@@ -46,10 +46,10 @@ struct ProductView: View {
                                 .background(Color.blue)
                                 .foregroundStyle(.black)
                                 .bold()
-                                .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+                                .cornerRadius(AppConstants.Radius.radiusValue)
                                 .overlay(
-                                RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
-                                    .stroke(Color.blue, lineWidth: 6)
+                                RoundedRectangle(cornerRadius: AppConstants.Radius.radiusValue)
+                                    .stroke(Color.blue, lineWidth: AppConstants.Theme.buttonLineWidthValue)
                             )
                         })
                 }
@@ -60,7 +60,7 @@ struct ProductView: View {
             .padding()
             .frame(height: AppConstants.Sizes.cartViewHeightSize)
             .background(Color.gray.opacity(AppConstants.Theme.backgroundOpacityValue))
-            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+            .cornerRadius(AppConstants.Radius.radiusValue)
     }
 }
 

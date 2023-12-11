@@ -36,7 +36,7 @@ struct CartProductView: View {
 
                     Spacer()
 
-                    HStack(spacing: 10) {
+                    HStack(spacing: AppConstants.Sizes.productCardSpacingValue) {
                         Button(action: {
                             let addedValue = userProduct.quantity > 0 ? -1 : 0
 
@@ -77,7 +77,7 @@ struct CartProductView: View {
             .padding()
             .frame(height: AppConstants.Sizes.cartViewHeightSize)
             .background(Color.gray.opacity(AppConstants.Theme.backgroundOpacityValue))
-            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+            .cornerRadius(AppConstants.Radius.radiusValue)
     }
 }
 

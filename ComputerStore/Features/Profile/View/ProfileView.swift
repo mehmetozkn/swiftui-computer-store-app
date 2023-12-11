@@ -47,7 +47,7 @@
                             }
                             .foregroundColor(.black)
                                 .pickerStyle(.menu)
-                                .frame(width: AppConstants.Sizes.generalButtonWidthSize)
+                                .frame(width: AppConstants.Sizes.generalButtonWidthValue)
                                
 
 
@@ -59,9 +59,9 @@
                                     .bold()
                                 })
                                 .padding()
-                                .frame(width:   AppConstants.Sizes.generalButtonWidthSize, height:  AppConstants.Sizes.generalButtonHeightSize)
+                                .frame(width:   AppConstants.Sizes.generalButtonWidthValue, height:  AppConstants.Sizes.generalButtonHeightValue)
                                 .background(Color.blue.opacity(AppConstants.Theme.backgroundOpacityValue))
-                                .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+                                .cornerRadius(AppConstants.Radius.radiusValue)
 
                         } else {
                             

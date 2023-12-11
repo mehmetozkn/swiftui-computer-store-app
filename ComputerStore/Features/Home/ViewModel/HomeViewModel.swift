@@ -9,10 +9,11 @@ import Foundation
 
 
 class HomeViewModel: ObservableObject {
+    private let homeService = HomeService()
 
     @Published var products = [ProductModel]()
     @Published var cartProducts = [CartProductModel]()
-    private let homeService = HomeService()
+    @Published var isLoading : Bool = false
     @Published var cartItemCount = 0
     @Published var totalPrice: Double = 0
 
@@ -63,6 +64,7 @@ class HomeViewModel: ObservableObject {
                 if let products = products {
                     DispatchQueue.main.async {
                         self.products = products
+                        self.isLoading = true
                     }
                 }
 

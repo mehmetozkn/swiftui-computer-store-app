@@ -22,10 +22,10 @@ class RegisterViewModel: ObservableObject {
         registerService.register(email: email, password: password) { success in
             if success {
                 self.isLogged = true
+                completion(success)
+            } else {
+                completion(false)
             }
-            completion(success) 
         }
     }
-
-
 }

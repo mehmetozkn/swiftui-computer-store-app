@@ -56,8 +56,6 @@ private struct CartTab: View {
     
     private let iconSystemName = "cart"
     
-    private let buttonWidthSize  = UIScreen.screenWidth * 0.4
-
     var body: some View {
 
         VStack {
@@ -88,14 +86,14 @@ private struct CartTab: View {
                 }, label: {
 
                     Text(LocaleKeys.Home.completeOrder.rawValue.locale())
-                            .frame(width: buttonWidthSize)
+                        .frame(width: AppConstants.Sizes.generalButtonWidthValue)
                             .background(Color.blue)
                             .foregroundStyle(.white)
                             .bold()
-                            .cornerRadius(AppConstants.Radius.cornerRadiusValue)
+                            .cornerRadius(AppConstants.Radius.radiusValue)
                             .overlay(
-                            RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
-                                .stroke(Color.blue, lineWidth: 6)
+                            RoundedRectangle(cornerRadius: AppConstants.Radius.radiusValue)
+                                .stroke(Color.blue, lineWidth: AppConstants.Theme.buttonLineWidthValue)
                         )
                     })
 
@@ -126,26 +124,31 @@ private struct HomeTab: View {
     private let iconSystemName = "house"
 
     var body: some View {
-        VStack {
-            Text(LocaleKeys.Home.title.rawValue.locale())
-                .bold()
-                .font(.title)
-                .padding()
+        if homeViewModel.isLoading {
+            VStack {
+                Text(LocaleKeys.Home.title.rawValue.locale())
+                    .bold()
+                    .font(.title)
+                    .padding()
 
-            List(homeViewModel.products, id: \.id) { product in
-                ProductView(product: product, homeViewModel: homeViewModel)
-               
+                List(homeViewModel.products, id: \.id) { product in
+                    ProductView(product: product, homeViewModel: homeViewModel)
+                   
 
-            }.listStyle(GroupedListStyle.init())
-
-        }
-            .tabItem {
-            Image(systemName: iconSystemName)
-                Text(LocaleKeys.TabItems.home.rawValue.locale())
-                .onAppear {
-                homeViewModel.getProductCountByUserId()
+                }.listStyle(GroupedListStyle.init())
 
             }
+                .tabItem {
+                Image(systemName: iconSystemName)
+                    Text(LocaleKeys.TabItems.home.rawValue.locale())
+                    .onAppear {
+                    homeViewModel.getProductCountByUserId()
+
+                }
+            }
+     
+        } else {
+            CircularProgressView()
         }
     }
 }
