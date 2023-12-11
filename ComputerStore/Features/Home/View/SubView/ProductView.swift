@@ -42,7 +42,6 @@ struct ProductView: View {
                     },
                         label: {
                         Text(LocaleKeys.Home.add.rawValue.locale())
-<<<<<<< Updated upstream
                             .frame(width: AppConstants.Sizes.addButtonWidthSize)
                                 .background(Color.blue)
                                 .foregroundStyle(.black)
@@ -51,16 +50,6 @@ struct ProductView: View {
                                 .overlay(
                                 RoundedRectangle(cornerRadius: AppConstants.Radius.cornerRadiusValue)
                                     .stroke(Color.blue, lineWidth: 6)
-=======
-                            .frame(width: AppConstants.Sizes.addButtonWidthValue)
-                                .background(Color.blue)
-                                .foregroundStyle(.black)
-                                .bold()
-                                .cornerRadius(AppConstants.Radius.radiusValue)
-                                .overlay(
-                                RoundedRectangle(cornerRadius: AppConstants.Radius.radiusValue)
-                                    .stroke(Color.blue, lineWidth: AppConstants.Theme.buttonLineWidthValue)
->>>>>>> Stashed changes
                             )
                         })
                 }
@@ -69,15 +58,9 @@ struct ProductView: View {
             Spacer()
         }
             .padding()
-<<<<<<< Updated upstream
             .frame(height: AppConstants.Sizes.cartViewHeightSize)
             .background(Color.gray.opacity(AppConstants.Theme.backgroundOpacityValue))
             .cornerRadius(AppConstants.Radius.cornerRadiusValue)
-=======
-            .frame(height: AppConstants.Sizes.productCardHeightValue)
-            .background(Color.gray.opacity(AppConstants.Theme.productCardOpacityValue))
-            .cornerRadius(AppConstants.Radius.radiusValue)
->>>>>>> Stashed changes
     }
 }
 

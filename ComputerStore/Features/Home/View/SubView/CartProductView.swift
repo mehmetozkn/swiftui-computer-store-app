@@ -36,7 +36,7 @@ struct CartProductView: View {
 
                     Spacer()
 
-                    HStack(spacing: AppConstants.Sizes.productCardSpacingValue) {
+                    HStack(spacing: 10) {
                         Button(action: {
                             let addedValue = userProduct.quantity > 0 ? -1 : 0
 
@@ -75,15 +75,9 @@ struct CartProductView: View {
             }
         }
             .padding()
-<<<<<<< Updated upstream
             .frame(height: AppConstants.Sizes.cartViewHeightSize)
             .background(Color.gray.opacity(AppConstants.Theme.backgroundOpacityValue))
             .cornerRadius(AppConstants.Radius.cornerRadiusValue)
-=======
-            .frame(height: AppConstants.Sizes.productCardHeightValue)
-            .background(Color.gray.opacity(AppConstants.Theme.productCardOpacityValue))
-            .cornerRadius(AppConstants.Radius.radiusValue)
->>>>>>> Stashed changes
     }
 }
 

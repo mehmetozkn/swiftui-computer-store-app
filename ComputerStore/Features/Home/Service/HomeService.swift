@@ -93,7 +93,7 @@ class HomeService: IHomeService {
         request.httpMethod = HttpTypes.DELETE.stringValue
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error != nil {
+            if let error = error {
                 completion(.failure(.invalidResponse))
 
             } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {

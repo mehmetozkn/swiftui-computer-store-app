@@ -5,6 +5,7 @@
 //  Created by Mehmet Özkan on 21.09.2023.
 //
 
+import Foundation
 
 struct ProductModel : Codable {
     var id: Int
@@ -24,6 +25,7 @@ struct ProductModel : Codable {
            case processor = "processor"
            case imageUrl = "imageUrl"
        }
+    
 }
 
 

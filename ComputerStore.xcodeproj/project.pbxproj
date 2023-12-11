@@ -22,7 +22,6 @@
 		856CFEA42AC76C98001798B2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856CFEA32AC76C98001798B2 /* LoginService.swift */; };
 		858416822AC42CC60098EDB8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 858416812AC42CC60098EDB8 /* Kingfisher */; };
 		858416842AC433BE0098EDB8 /* HttpPathsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858416832AC433BE0098EDB8 /* HttpPathsEnum.swift */; };
-		858416872AC435340098EDB8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 858416862AC435340098EDB8 /* Alamofire */; };
 		859171092ABDDA890023DEDB /* CartProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859171082ABDDA890023DEDB /* CartProductModel.swift */; };
 		85B018132B212343008D3070 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B018122B212343008D3070 /* AppConstants.swift */; };
 		85B018152B21251D008D3070 /* AuthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B018142B21251D008D3070 /* AuthScreenView.swift */; };
@@ -47,12 +46,6 @@
 		85F050082ABCAEA8009CB1BB /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F050072ABCAEA8009CB1BB /* ProductModel.swift */; };
 		85F0500A2ABCAFA0009CB1BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F050092ABCAFA0009CB1BB /* HomeViewModel.swift */; };
 		85F0500D2ABCB0F4009CB1BB /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F0500C2ABCB0F4009CB1BB /* HomeService.swift */; };
-		85F3BF5A2B2760CF00A9CF16 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF592B2760CF00A9CF16 /* AppConstants.swift */; };
-		85F3BF5C2B27636E00A9CF16 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF5B2B27636E00A9CF16 /* CustomTextFieldView.swift */; };
-		85F3BF5E2B27650D00A9CF16 /* CustomSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF5D2B27650D00A9CF16 /* CustomSecureFieldView.swift */; };
-		85F3BF602B27656D00A9CF16 /* CustomAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF5F2B27656D00A9CF16 /* CustomAuthView.swift */; };
-		85F3BF622B27694A00A9CF16 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF612B27694A00A9CF16 /* CustomButtonView.swift */; };
-		85F3BF642B2769E500A9CF16 /* LocalizedTitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BF632B2769E500A9CF16 /* LocalizedTitleTextView.swift */; };
 		85F6101A2ABE475C00DDB11E /* HttpRequestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F610192ABE475C00DDB11E /* HttpRequestEnum.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,12 +81,6 @@
 		85F050072ABCAEA8009CB1BB /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		85F050092ABCAFA0009CB1BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		85F0500C2ABCB0F4009CB1BB /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
-		85F3BF592B2760CF00A9CF16 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		85F3BF5B2B27636E00A9CF16 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
-		85F3BF5D2B27650D00A9CF16 /* CustomSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureFieldView.swift; sourceTree = "<group>"; };
-		85F3BF5F2B27656D00A9CF16 /* CustomAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthView.swift; sourceTree = "<group>"; };
-		85F3BF612B27694A00A9CF16 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
-		85F3BF632B2769E500A9CF16 /* LocalizedTitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedTitleTextView.swift; sourceTree = "<group>"; };
 		85F610192ABE475C00DDB11E /* HttpRequestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +91,6 @@
 			files = (
 				858416822AC42CC60098EDB8 /* Kingfisher in Frameworks */,
 				85EC40442AC77DC700DA8BEC /* FirebaseFirestoreSwift in Frameworks */,
-				858416872AC435340098EDB8 /* Alamofire in Frameworks */,
 				85EC40342AC77DC700DA8BEC /* FirebaseAuth in Frameworks */,
 				85EC403C2AC77DC700DA8BEC /* FirebaseDatabaseSwift in Frameworks */,
 				85EC40402AC77DC700DA8BEC /* FirebaseFirestore in Frameworks */,
@@ -243,15 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				85F04FFA2ABCA65C009CB1BB /* ComputerImageView.swift */,
-<<<<<<< Updated upstream
 				85B018142B21251D008D3070 /* AuthScreenView.swift */,
-=======
-				85F3BF5B2B27636E00A9CF16 /* CustomTextFieldView.swift */,
-				85F3BF5D2B27650D00A9CF16 /* CustomSecureFieldView.swift */,
-				85F3BF5F2B27656D00A9CF16 /* CustomAuthView.swift */,
-				85F3BF612B27694A00A9CF16 /* CustomButtonView.swift */,
-				85F3BF632B2769E500A9CF16 /* LocalizedTitleTextView.swift */,
->>>>>>> Stashed changes
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -361,11 +339,7 @@
 		85F050022ABCA915009CB1BB /* Core */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream
 				85B018112B212336008D3070 /* Constants */,
-=======
-				85F3BF582B2760BC00A9CF16 /* Constants */,
->>>>>>> Stashed changes
 				85774D332AC5A6A500494482 /* Components */,
 				85F050102ABCB1EB009CB1BB /* Enums */,
 				85F050062ABCACE5009CB1BB /* Extensions */,
@@ -392,14 +366,6 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		85F3BF582B2760BC00A9CF16 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				85F3BF592B2760CF00A9CF16 /* AppConstants.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -418,7 +384,6 @@
 			name = ComputerStore;
 			packageProductDependencies = (
 				858416812AC42CC60098EDB8 /* Kingfisher */,
-				858416862AC435340098EDB8 /* Alamofire */,
 				85EC40332AC77DC700DA8BEC /* FirebaseAuth */,
 				85EC40392AC77DC700DA8BEC /* FirebaseDatabase */,
 				85EC403B2AC77DC700DA8BEC /* FirebaseDatabaseSwift */,
@@ -500,11 +465,8 @@
 				856CFE902AC76519001798B2 /* UserModel.swift in Sources */,
 				856CFE942AC76C06001798B2 /* RegisterView.swift in Sources */,
 				85D807202AC8BD0700E54AD4 /* AuthErrorEnum.swift in Sources */,
-				85F3BF5C2B27636E00A9CF16 /* CustomTextFieldView.swift in Sources */,
-				85F3BF642B2769E500A9CF16 /* LocalizedTitleTextView.swift in Sources */,
 				85F6101A2ABE475C00DDB11E /* HttpRequestEnum.swift in Sources */,
 				8517E83F2ACA1AFB001B162C /* LocaleKeys.swift in Sources */,
-				85F3BF5E2B27650D00A9CF16 /* CustomSecureFieldView.swift in Sources */,
 				859171092ABDDA890023DEDB /* CartProductModel.swift in Sources */,
 				85D807222AC8BD1300E54AD4 /* NetworkErrorEnum.swift in Sources */,
 				856CFE9A2AC76C2D001798B2 /* ProfileView.swift in Sources */,
@@ -519,13 +481,7 @@
 				856CFEA22AC76C8F001798B2 /* LoginView.swift in Sources */,
 				851843AF2AE47A4B002EEBEE /* CartProductView.swift in Sources */,
 				85F050082ABCAEA8009CB1BB /* ProductModel.swift in Sources */,
-<<<<<<< Updated upstream
 				85B018132B212343008D3070 /* AppConstants.swift in Sources */,
-=======
-				85F3BF5A2B2760CF00A9CF16 /* AppConstants.swift in Sources */,
-				85F3BF622B27694A00A9CF16 /* CustomButtonView.swift in Sources */,
-				85F3BF602B27656D00A9CF16 /* CustomAuthView.swift in Sources */,
->>>>>>> Stashed changes
 				851843AD2AE47820002EEBEE /* ProductView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,11 +741,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 858416802AC42CC60098EDB8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		858416862AC435340098EDB8 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 858416852AC435340098EDB8 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		85DCD8352ACAC8D8007B9A98 /* LanguageManagerSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

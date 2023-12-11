@@ -17,16 +17,14 @@ struct RegisterView: View {
         
         NavigationStack {
             ZStack {
-<<<<<<< Updated upstream
                 AuthScreenView()
-=======
-               CustomAuthView()
->>>>>>> Stashed changes
 
                 VStack {
-                    LocalizedTitleTextView(text: LocaleKeys.Auth.registerTitle.rawValue.locale())
+                    Text(LocaleKeys.Auth.registerTitle.rawValue.locale())
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
                     
-<<<<<<< Updated upstream
                     TextField(LocaleKeys.Auth.name.rawValue.locale(), text: $registerViewModel.nameValue)
                         .padding()
                         .frame(width: AppConstants.Sizes.textFieldWidthSize, height: AppConstants.Sizes.textFieldHeightSize)
@@ -79,27 +77,7 @@ struct RegisterView: View {
 
 
                     HStack(spacing: 3) {
-=======
-                    CustomTextFieldView(placeholder: LocaleKeys.Auth.name.rawValue.locale(), text: $registerViewModel.nameValue)
-                    
-                    CustomTextFieldView(placeholder: LocaleKeys.Auth.surname.rawValue.locale(), text: $registerViewModel.surnameValue)
- 
-                    CustomTextFieldView(placeholder: LocaleKeys.Auth.email.rawValue.locale(), text: $registerViewModel.emailValue)
-                    
-                    CustomTextFieldView(placeholder:LocaleKeys.Auth.password.rawValue.locale(), text: $registerViewModel.passwordValue)
-                    
-                    CustomButtonView(title: LocaleKeys.Auth.register.rawValue.locale()) {
-                                      registerViewModel.register(email: registerViewModel.emailValue, password: registerViewModel.passwordValue) { success in
-                                          if success {
-                                              redirectToHome = true
-                                          } else {
-                                              
-                                          }
-                                      }
-                                  }
->>>>>>> Stashed changes
 
-                    HStack(spacing: AppConstants.Sizes.authTextSpacingValue) {
                         Text(LocaleKeys.Auth.alreadyAccount.rawValue.locale())
                         NavigationLink {
                             LoginView()

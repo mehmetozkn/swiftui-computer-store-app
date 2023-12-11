@@ -11,13 +11,10 @@ import LanguageManagerSwiftUI
 class ProfileViewModel: ObservableObject  {
     
     @Published var isLoggedOut = false
-<<<<<<< Updated upstream
 
-=======
-    
->>>>>>> Stashed changes
     func logout() {
         isLoggedOut = true
     }
+    
     
 }

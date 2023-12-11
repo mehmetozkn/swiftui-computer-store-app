@@ -16,6 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published var cartItemCount = 0
     @Published var totalPrice: Double = 0
 
+
     init() {
         getUserProducts()
         getAllProduts()
