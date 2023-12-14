@@ -38,12 +38,12 @@ class HomeViewModel: ObservableObject {
     }
 
     func clearBasket() {
-        homeService.clearBasket(path: .clearBasket) { result in
+        homeService.clearBasket(path: .clearBasket) { [weak self] result in
                switch result {
                case .success(true):
                    DispatchQueue.main.async {
-                       self.cartProducts = []
-                       self.getProductCountByUserId()
+                       self?.cartProducts = []
+                       self?.getProductCountByUserId()
                    }
                    
                case .failure(let error):
@@ -57,14 +57,14 @@ class HomeViewModel: ObservableObject {
 
 
     func getAllProduts() {
-        homeService.fetchProducts(path: .getAll) { (result) in
+        homeService.fetchProducts(path: .getAll) { [weak self] result in
             switch result {
 
             case .success(let products):
                 if let products = products {
                     DispatchQueue.main.async {
-                        self.products = products
-                        self.isLoading = true
+                        self?.products = products
+                        self?.isLoading = true
                     }
                 }
 
@@ -75,14 +75,14 @@ class HomeViewModel: ObservableObject {
     }
 
     func getUserProducts() {
-        homeService.fetchUserProducts(path: .getProductByUserId) { (result) in
+        homeService.fetchUserProducts(path: .getProductByUserId) { [weak self] result in
             switch result {
 
             case .success(let cartProducts):
                 if let cartProducts = cartProducts {
                     DispatchQueue.main.async {
-                        self.cartProducts = cartProducts
-                        self.calculateTotalPrice()
+                        self?.cartProducts = cartProducts
+                        self?.calculateTotalPrice()
                     }
                    
                 }
@@ -94,11 +94,11 @@ class HomeViewModel: ObservableObject {
     }
 
     func getProductCountByUserId() {
-        homeService.fetchProductCountByUserId(path: .getProductByUserId) { (result) in
+        homeService.fetchProductCountByUserId(path: .getProductByUserId) { [weak self] result in
             switch result {
             case .success(let count):
                 DispatchQueue.main.async {
-                    self.cartItemCount = count
+                    self?.cartItemCount = count
                 }
 
             case .failure(let error):
@@ -110,15 +110,13 @@ class HomeViewModel: ObservableObject {
     }
 
     func addProductToCart(id: Int, quantity: Int) {
-        homeService.addProductToCart(path: .addProductToBasket, productId: id, quantity: quantity) { result in
+        homeService.addProductToCart(path: .addProductToBasket, productId: id, quantity: quantity) { [weak self] result in
             switch result {
 
             case .success:
                 DispatchQueue.main.async {
-               
-                    self.getUserProducts()
-
-                    self.getProductCountByUserId()
+                    self?.getUserProducts()
+                    self?.getProductCountByUserId()
                     
                 }
             case .failure(let error):

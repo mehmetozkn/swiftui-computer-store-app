@@ -16,9 +16,9 @@ class LoginViewModel : ObservableObject {
     
     
     func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
-        loginService.login(email: email, password: password) { success in
+        loginService.login(email: email, password: password) { [weak self] success in
             if success {
-                self.isLogged = true
+                self?.isLogged = true
                 completion(success)
 
             } else {
