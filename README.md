@@ -11,6 +11,7 @@ Full Stack Computer Store Project
 
 ### Includes
 
+- Localization
 - MVVM Design Pattern
 - REST API
 - Kingfisher
